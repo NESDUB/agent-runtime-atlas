@@ -1,18 +1,20 @@
 # Agent Runtime Atlas
 
-Evidence-backed discovery of what an AI agent can actually do in its current environment. Jim owns this atlas; Frank runs separately in the LoopyLogic environment; Gemma relays mobile voice decisions. Never assume one agent shares another's tools, permissions or filesystem.
+Evidence-backed discovery of what an AI agent can actually do in its current environment.
+
+**Jim** performs this runtime investigation. **Gemma** is the coordinating ChatGPT Mobile collaborator for NES. This repository is the sole scope of the initial project. Do not involve unrelated research agents, inspect their environments, or modify other repositories without NES explicitly extending the scope.
 
 ## Initial artifacts
 
-- [Jim's findings, November 21, 2026](docs/reports/2026-11-21-jim-initial.md)
+- [Jim's first-session findings](docs/reports/2026-11-21-jim-initial.md)
 - [Machine-readable capability matrix](data/capabilities/jim-2026-11-21.json)
-- [Safe probes and independent comparison protocol](docs/probe-methodology.md)
-- [Proposed Frank–Gemma handoff](docs/communication-handoff.md)
-- [Offline Python probe](scripts/probe_runtime.py) and [tests](tests/test_probe_runtime.py)
+- [Safe reproducible probes and future comparison procedure](docs/probe-methodology.md)
+- [Proposed Jim–Gemma handoff protocol](docs/communication-handoff.md)
+- [Offline Python probe](scripts/probe_runtime.py) and [unit tests](tests/test_probe_runtime.py)
 
 ## Reproduce
 
-Requires Python 3.9 or newer (initially tested on Python 3.13.5). The default mode performs passive system inspection and outputs JSON:
+Requires Python 3.9+ (tested with Python 3.13.5). Default mode is passive and prints JSON:
 
     python3 scripts/probe_runtime.py
 
@@ -21,14 +23,14 @@ Explicitly opt in to benign subprocess calls and ephemeral scratch-file roundtri
     python3 scripts/probe_runtime.py --allow-exec --allow-temp-write
     python3 -m unittest discover -s tests -v
 
-To save JSON, pass --output followed by an unused file path. The script refuses to overwrite existing files. Review any result before publication.
+To save JSON, use --output with an unused file path; overwrite is refused. Review any result before publication.
 
-## Rules
+## Evidence and safety
 
-Statuses: verified, observed_unvalidated, inferred, not_tested, blocked. Every claim identifies the specific agent/session, invocation surface, test and result. An advertised tool, API metadata flag or another worker's result is not proof.
+Statuses: verified, observed_unvalidated, inferred, not_tested, blocked. Every claim identifies the current agent/session, tool surface, procedure, observation, and uncertainty. Advertised tools and API metadata do not prove they function.
 
-This probe makes no network requests, installs no packages, reads no secrets or environment variables, changes no privileges, and does not probe connected personal accounts. Cross-session persistence and host privileges must be tested independently. UID 0 in an isolated runtime is not proof of host privileges.
+The probe sends no network traffic, installs no packages, reads no secrets or environment variables, changes no privileges, and does not query connected personal account data. Session persistence, host privileges, and future independent-agent compatibility have not been established. Local UID 0 is not proof of host privileges.
 
-## Separation of concerns
+## Collaboration
 
-Jim can propose communication improvements but cannot modify Frank's LoopyLogic project without separate authorization. Work is published to a review branch and proposed through a pull request; no automatic merge to main.
+Jim records evidence and proposals here. Gemma reviews and coordinates next steps with NES. Findings are submitted for review on a dedicated branch/PR; no automatic merge to main.
