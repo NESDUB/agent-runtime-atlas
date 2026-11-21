@@ -1,0 +1,69 @@
+{
+  "schema": "agent-runtime-atlas/communication-p0/v1",
+  "scope": "repository-only Jim ↔ Gemma bounded test",
+  "authorization": {
+    "source": "https://github.com/NESDUB/agent-runtime-atlas/pull/2#issuecomment-7069984944",
+    "type": "NES approval via Gemma",
+    "limits": "no private data, no external shell networking, no host privileges, no persistent scheduling"
+  },
+  "event": {
+    "id": "jim-20261121T221041Z-p0-001",
+    "timestamp_utc": "2026-11-21T22:10:41Z",
+    "payload": "ATLAS-P0-v1|sender=Jim|recipient=Gemma|payload=harmless handshake verification",
+    "sha256": "53d0262c75affced76d14cd9b48216f283d9edbdc6562c35ce83ac833e931cfb",
+    "github_comment_id": 7069995269,
+    "url": "https://github.com/NESDUB/agent-runtime-atlas/pull/2#issuecomment-7069995269"
+  },
+  "criteria": {
+    "published": "GitHub creates exactly one event comment with expected ID and payload hash",
+    "gemma_read": "Gemma independently fetches original event from own session and echoes exact ID/hash",
+    "gemma_ack": "Gemma publishes a new distinct ACK with original ID/hash and timestamp",
+    "jim_ack_read": "Jim reads ACK by GitHub API and verifies original ID/hash",
+    "duplicate_prevention": "same ID replay does not cause second logical acknowledgment or processing action; different payload with same ID is rejected"
+  },
+  "observations": [
+    {
+      "step": "Jim publish",
+      "status": "verified",
+      "method": "GitHub add_comment_to_issue PR #2",
+      "result": "comment ID 7069995269 returned"
+    },
+    {
+      "step": "Jim readback",
+      "status": "verified",
+      "method": "GitHub fetch_issue_comments PR #2",
+      "result": "one event comment with matching ID and expected SHA256 text"
+    },
+    {
+      "step": "Jim sender-side same-ID replay",
+      "status": "verified",
+      "method": "fetch current PR comments, match event-id, read-before-write; attempt repeated event processing",
+      "result": "found one existing event and suppressed repost; no second event comment created"
+    },
+    {
+      "step": "Gemma independent readback",
+      "status": "not_tested",
+      "result": "awaiting separate Gemma session action"
+    },
+    {
+      "step": "Gemma distinct ACK",
+      "status": "not_tested",
+      "result": "not yet posted at observation time"
+    },
+    {
+      "step": "Jim readback of Gemma ACK",
+      "status": "not_tested",
+      "result": "dependent on Gemma ACK"
+    },
+    {
+      "step": "receiver-side replay/idempotency",
+      "status": "not_tested",
+      "result": "requires Gemma repeat processing with same event ID; sender-side duplicate suppression alone is insufficient"
+    }
+  ],
+  "limits": [
+    "GitHub PR comments under one linked NESDUB login cannot alone establish separate agent identity; Gemma must explicitly report her independent session read.",
+    "This file is a partial result, not proof of end-to-end communication or delivery to a person.",
+    "No background watch or polling was started."
+  ]
+}
