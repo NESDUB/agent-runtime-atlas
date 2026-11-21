@@ -25,6 +25,7 @@ Statuses: **discovered** = name/path observed; **readable** = authorized content
 - [All 202 tool names, families, descriptions, status](../data/agent-discovery/tool-actions-2026-11-21.json)
 - [Skills 00–11](../data/agent-discovery/plugin-skills-00-11.json), [skills 12–23](../data/agent-discovery/plugin-skills-12-23.json), [skills 24–36](../data/agent-discovery/plugin-skills-24-36.json)
 - [Local paths, package versions, CLI entry points and config candidates](../data/agent-discovery/local-surfaces-2026-11-21.json)
+- [Full 184-file local skill-directory path inventory](../data/agent-discovery/local-skill-files-2026-11-21.json)
 
 ## 1. SKILLS are two different discovery surfaces
 
