@@ -1,39 +1,29 @@
-# Frank ↔ Gemma communication design — proposal, not deployed
+# Jim ↔ Gemma GitHub handoff — proposal, not deployed
 
-## Actors and boundaries
+## Current project boundary
 
-Frank owns LoopyLogic research in a distinct execution environment. Gemma is the mobile ChatGPT voice relay for NES. Jim owns this runtime atlas and is not authorized to modify the LoopyLogic repository during this investigation.
+Jim investigates his own runtime; Gemma coordinates with NES through ChatGPT Mobile. Both should use NESDUB/agent-runtime-atlas as the source of project records. Do not read, modify, or send tasks to unrelated research agents or repositories. This is a design proposal; there has not been a verified second-agent delivery.
 
-Existing LoopyLogic briefing channels, as described to Jim:
-- Frank outbound: briefs/chatgpt-to-eve.md (legacy filename retained).
-- Gemma inbound: briefs/mobile-to-chatgpt.md.
-- Maximum six physical lines per entry, one headline plus concise delta-only bullets.
+## Proposed transport
 
-This is a supplied protocol, not a fresh read of LoopyLogic from Jim's environment.
+1. Maintain a durable, versioned source of truth in this repository. Use append-only GitHub issue/PR comments for discrete messages if each actor independently verifies appropriate permissions; use versioned Markdown as a fallback.
+2. Each event includes event_id, source, destination, UTC timestamp, minimal delta, related commit/report URL and optional NEEDS_NES decision field. Use a per-sender monotonic sequence and do not reuse an event ID for different content.
+3. Separate states: authored, published, fetched, acknowledged, relayed_to_NES. A successful GitHub write is not proof that Gemma read or spoke the briefing.
+4. Acknowledgments reference exact event IDs. On retries, read before writing and deduplicate by ID. If updating Markdown, use fetched blob SHA to make a conditional update; after conflict refetch and reconcile rather than overwriting.
+5. Keep voice briefings short and delta-only: one headline plus no more than five bullet lines. Link deep technical findings to a committed report.
+6. No background polling or notification capability is assumed. Only a separately verified automation/trigger or explicit invocation can progress messages without another user turn.
 
-## Recommended reliability model
+### Example message (six lines)
 
-1. Treat GitHub as durable source of truth; never rely on chat-window memory as the only queue.
-2. Prefer append-only GitHub issue or PR comments for immutable per-message IDs and timestamps, but only if EACH actor's permissions are separately verified. Existing Markdown channels remain an acceptable compatibility transport.
-3. Every message carries event_id, source, destination, UTC timestamp, related commit/issue, payload and an acknowledgment reference. Use a monotonic per-sender sequence; never reuse an ID for different content.
-4. Delivery states are distinct: created, published, fetched, acknowledged, relayed_to_human. Do not mark delivered before the relevant actor reads it.
-5. Deduplicate retries by event_id. For Markdown file append, fetch current blob SHA, perform conditional update, and on a conflict refetch, reconcile and retry. Do not issue concurrent updates to the same path.
-6. Compress the mobile briefing to six lines maximum: one header and up to five delta-only bullets. Put long evidence in a linked issue, report or commit. Include an explicit NEEDS_NES field for a blocking decision.
-7. A push to GitHub does not itself imply a background listener or that Gemma has seen a message. Polling/notification requires a separately confirmed automation, webhook, workflow or explicit agent invocation.
-
-### Proposed six-line envelope
-
-    [FRANK→GEMMA] id=frank-20261121T220000Z-0001
-    - delta: 2 transform call sites mapped
-    - evidence: commit <sha>
-    - blocker: runtime target unknown
-    - needs_NES: approve targeted tracing?
+    [JIM→GEMMA] id=jim-20261121T220000Z-0001
+    - delta: offline runtime probe tested
+    - evidence: report + commit link
+    - blocked: outbound shell networking untested
+    - needs_NES: approve scoped HTTPS probe?
     - ack: pending
 
-## Not yet validated
+## Untested hypotheses and next validation
 
-Real two-agent GitHub delivery; issue permission on both sides; update conflict recovery; retries and idempotency; notification latency; automated polling; voice-read delivery.
+Unverified: Gemma's independent read/ack ability, issue-comment write permissions on both sides, failure recovery, voice delivery, notification delay, simultaneous updates and idempotent retries. Do not claim operational inter-agent communication based on a document in GitHub.
 
-## Safe next protocol test
-
-After explicit separate authorization, create one isolated test message in a dedicated issue or branch, have the other agent fetch it, post an acknowledgment referencing the same event_id, retry the event once to check deduplication, and record latency/error behavior. Do not touch Frank's production channels while testing this proposal.
+After NES/Gemma authorizes a sandbox transport trial, create a single isolated test event in this repository, independently fetch it in Gemma's environment, post a matching acknowledgment, and verify a duplicate ID does not create a duplicate action. Keep tests in this repository; do not expand scope without new instructions.
