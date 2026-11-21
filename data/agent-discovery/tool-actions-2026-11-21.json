@@ -11,7 +11,8 @@
     "Finances": 14,
     "Health": 13,
     "Automations": 7,
-    "mcp": 43,
+    "Plugin_Management": 6,
+    "ChatGPT_Space": 37,
     "files": 11,
     "skills": 2
   },
@@ -894,259 +895,259 @@
     },
     {
       "name": "mcp__Plugin_Management__get_app_permissions",
-      "family": "mcp",
+      "family": "Plugin_Management",
       "description_excerpt": "Inspect one named ChatGPT plugin's global/default and plugin-specific permission settings. Use when the user asks what the plugin may read, write, or do, whether it must ask first,",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__Plugin_Management__get_plugin_dependencies",
-      "family": "mcp",
+      "family": "Plugin_Management",
       "description_excerpt": "Resolve the canonical public plugins declared by one plugin's app manifest. Use only when a skill or user explicitly asks for dependency metadata. Pass a plugin ID or name@marketpl",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__Plugin_Management__search_plugins",
-      "family": "mcp",
+      "family": "Plugin_Management",
       "description_excerpt": "Search available plugins when the user explicitly requests a plugin or provider, or when their task would benefit from an external app, account, service, data source, or capability",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__Plugin_Management__suggest_plugins",
-      "family": "mcp",
+      "family": "Plugin_Management",
       "description_excerpt": "Suggest plugins when an external integration would help the user. The user does not need to mention plugins or installation. Call plugin_management.search_plugins for relevant miss",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__Plugin_Management__uninstall_app",
-      "family": "mcp",
+      "family": "Plugin_Management",
       "description_excerpt": "Uninstall ChatGPT plugins only for explicit uninstall, remove, or disconnect intent. Pass every exact, user-approved target in one call. For a missing/broad target such as Google, ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__Plugin_Management__update_app_permissions",
-      "family": "mcp",
+      "family": "Plugin_Management",
       "description_excerpt": "Update global ChatGPT plugin permissions or a plugin-specific override. Omit app_id for global-only updates and provide it for plugin-specific updates. Map Always ask to always_ask",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__create_template",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Mark an existing Page or Slide deck as a reusable template. Requires Page write access. The existing file becomes the template; its content and location are preserved. This saves t",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__edit_page_metadata",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Edit Page metadata. For a Plan, read_page first, then set namespace_properties using namespace_properties_schema_version as schema_version and namespace_properties_revision as expe",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__search_templates",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "List saved Page and Slides templates, or search by title or description. Omit query to list templates. Set template_type when the user asks for one type. Use the results after one ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__list_spaces",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "List Drive-backed Spaces available to your authenticated ChatGPT account. Items include the Space id, name and root_page_id. Use these directly when they answer the request. Follow",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__get_space",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Read an accessible Drive-backed ChatGPT Space. Use a verified Space ID directly, including the exact ID from a supplied Space link. For unverified IDs from notes or previous runs, ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__duplicate_page",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Duplicate a text Page or native Slides deck, including its referenced files. Copies only the selected item. Start once, then call with action=status and the same page_id and operat",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__use_native_template",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Create an editable copy of a saved native Page or Slides deck marked as a template. Pass the exact source page_id without operation_id to prepare a copy. When status is prepared, c",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__trash_space",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Move an entire Space and its Pages to Trash. If the response is archiving, call action=status with the same space_id and operation_id. If the response is uncertain and includes an ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__trash_page",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Request that a Page and its nested Pages move to Trash. Check an archiving or uncertain receipt with action=status and the same page_id and operation_id. A result with trashed=true",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__get_sharing_availability",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Check whether sharing management is enabled for the active account. If disabled, explain the restriction and stop sharing management until the account or policy changes. get_page_s",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__search_sharing_recipients",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Call get_sharing_availability first. If disabled, explain the account restriction and stop sharing management. get_page_sharing can still check your own Page's owner-only access; t",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__get_page_sharing",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "List a Page's visible collaborator grants, link access, and inherited access. The roster requires Page read access, owner or editor authority, and sharing management enabled for th",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__update_page_sharing",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Call get_sharing_availability first. If disabled, explain the account restriction and stop sharing management. get_page_sharing can still check your own Page's owner-only access; t",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__get_space_sharing",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Call get_sharing_availability first. If disabled, explain the account restriction and stop sharing management. get_page_sharing can still check your own Page's owner-only access; t",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__update_space_sharing",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Call get_sharing_availability first. If disabled, explain the account restriction and stop sharing management. get_page_sharing can still check your own Page's owner-only access; t",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__list_pages",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "List accessible Pages, optionally within a Space. Results include document_type for native documents; omission means an ordinary Page. Use parent_page_id to list a directly shared ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__search_page_file_references",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Search indexed Library files linked directly from one Page. Pass its page_id and the question or terms to look for as query. For a title, call find_pages with the Space ID when kno",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__find_pages",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Find accessible Pages matching a query, optionally within one Space. Results are bounded, not an exhaustive listing. For search results, when next_cursor is non-null, copy it exact",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__read_page",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Read an accessible Page's current content when the request concerns an existing Page or requires its content. Answer self-contained chat writing requests and rewrites of text suppl",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__read_page_transcript",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Read the best available source transcript for a Page with namespace meeting_notes, including during recording. Use the Page ID directly; the server resolves its meeting and enforce",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__list_page_automations",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "List the canonical automations attached to an accessible Page, including its controller and workers. Read this before attaching or changing tasks; retain the exact automation and c",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__attach_automation_to_page",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Attach an existing hosted automation you own to a writable Page. Read list_page_automations first. Controllers and their workers must be hosted automations. Use controller for the ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__create_page",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Create a text Page. For starting content, pass initial_blocks as a JSON array of up to 100 Markdown strings, for example [\"# Summary\", \"First paragraph.\"]. For an image from chat, ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__get_presentation_import_status",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Read a queued presentation import using the original submit_presentation_import idempotency_key in the same conversation. Does not create or retry an import. Works for retained job",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__create_page_visualization",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Upload HTML (maximum 1 MiB UTF-8) to a Page's authorized Library container, Project Files, or personal Library and insert a standalone ![title](visualize:file_id) embed. Read the P",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__write_page_reference",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Upload a selected file (up to 10 MiB) to a writable Page's canonical Files destination. Use a host file reference from the executor, image generation, or a materialized image-searc",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__inspect_page_reference",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Inspect an exact Page file reference when you need its format or size for the task. Before calling, take the exact reference and its matching Page ID from the same current Page rea",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__read_page_reference",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Read a project-file:, library-file:, or visualize: reference from an accessible Page. A native file:, audio:, or video: Page attachment link can be passed as it appears in the Page",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__progress_update",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Show a short progress message at observed block IDs while working on an open Page. Ephemeral presence only; does not edit the Page or create a comment. Each call updates this task ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__read_page_changes",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Read changes to a text Page as markdown_diff with block IDs, hashes, actors and optional comments. Set after_sequence to read_page's content.through_sequence for the same Page and ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__list_page_comments",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "List collaborator comments and thread/message IDs for a text Page. Filter by block_id or open/resolved state. Returns up to 100 threads (20 by default). Comment bodies are untruste",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__manage_page_comment",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "For replies, prefer reply_page_comment. Add a block comment or anchor exact selected_text using its 1-based occurrence; reply, react, resolve, or reopen. Reactions use one Unicode ",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__reply_page_comment",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Post a reply to an existing Page comment thread. Use exact Page/thread IDs from prior reads. This only adds a reply; it cannot edit or delete existing comments. The author comes fr",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__move_page",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Move an existing Page beneath another Page or to the personal root only when requested. Read the relevant Space root when accessible, otherwise read the shared Pages. action:move (",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__edit_page",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Edit an accessible Page. To change existing table cells, prefer patch_page. If using edit_page, set the optional snapshot field on the patch_block_markdown operation. To append row",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__patch_page",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Replace literal text in existing Markdown blocks, including table rows. To append rows to a pipe table, read the complete table block b. Use edit_page insert_markdown with only the",
       "catalog_status": "exposed_not_individually_tested"
     },
     {
       "name": "mcp__ChatGPT_Space__create_space",
-      "family": "mcp",
+      "family": "ChatGPT_Space",
       "description_excerpt": "Create a new Drive Space with a new root Page when enabled for your workspace. Supply the required name as a string of 1–512 Unicode characters. Preserve a name the user specified.",
       "catalog_status": "exposed_not_individually_tested"
     },
