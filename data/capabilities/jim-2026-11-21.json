@@ -3,10 +3,10 @@
   "agent": "Jim",
   "environment_id": "jim-chatgpt-session-2026-11-21",
   "observed_at_utc_date": "2026-11-21",
-  "time_window": "approximately 21:48–21:52 UTC",
-  "scope": "Current ChatGPT session only; distinct shell, Python, JS and connector surfaces; not Frank's environment",
+  "time_window": "2026-11-21 approximately 21:48–21:53 UTC",
+  "scope": "Jim's current ChatGPT session only; shell, Python, JS orchestrator and GitHub connector surfaces; Jim ↔ Gemma project scope",
   "repo": "NESDUB/agent-runtime-atlas",
-  "instructions_blob_sha": "6cc319b3d60016a5058bafee769921dfb56c18c4",
+  "instructions_blob_sha": "a06f8d98e4523bc6f1487774876bd8e5439a82ee",
   "status_vocabulary": [
     "verified",
     "observed_unvalidated",
@@ -182,7 +182,7 @@
       "capability": "file_commit_write",
       "status": "verified",
       "procedure": "create_file on new branch (probe/tests and docs)",
-      "result": "GitHub returned commit SHAs"
+      "result": "create_file returned commit SHAs for scoped source/docs; readback returned expected blobs"
     },
     {
       "id": "GIT-004",
@@ -235,10 +235,10 @@
     {
       "id": "COM-001",
       "surface": "cross_agent",
-      "capability": "Frank_Gemma_delivery_ack",
+      "capability": "Jim_Gemma_delivery_ack",
       "status": "not_tested",
       "procedure": "Needs second agent and scoped handoff authorization",
-      "result": "not exercised"
+      "result": "Not yet exercised; requires independent Gemma verification and explicit review authorization"
     },
     {
       "id": "COM-002",
@@ -247,6 +247,19 @@
       "status": "not_tested",
       "procedure": "Needs separately authorized automation scheduling",
       "result": "not exercised"
+    },
+    {
+      "id": "GIT-005",
+      "surface": "connector.github",
+      "capability": "new_branch_file_readback",
+      "status": "verified",
+      "procedure": "fetch_file on Jim branch for all 8 observed files, match local git blob SHA for probe and tests",
+      "result": "All files retrieved; script and tests match locally tested blob hashes"
     }
+  ],
+  "notes": [
+    "AGENTS.md was revised during investigation; report follows current main SHA",
+    "No other research worker or project is in scope",
+    "Discovered connector counts do not imply functional authorization"
   ]
 }
