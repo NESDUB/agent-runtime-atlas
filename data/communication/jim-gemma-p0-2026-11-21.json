@@ -103,5 +103,5 @@
     "unresolved": "Gemma must read replay independently and post result; only then can receiver-side idempotency be marked verified"
   },
   "communication_cycle_status": "initial_roundtrip_passed; full_P0_replay_pending",
-  "evidence_checked_at_utc": "2026-11-21T22:13:15Z or later (GitHub replay comment timestamp; readback occurred subsequently; local exact observation timestamp unavailable)"
+  "evidence_checked_at_utc": "2026-11-21T22:13:45Z"
 }
