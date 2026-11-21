@@ -1,0 +1,252 @@
+{
+  "schema": "agent-runtime-atlas/capability-matrix/v1",
+  "agent": "Jim",
+  "environment_id": "jim-chatgpt-session-2026-11-21",
+  "observed_at_utc_date": "2026-11-21",
+  "time_window": "approximately 21:48–21:52 UTC",
+  "scope": "Current ChatGPT session only; distinct shell, Python, JS and connector surfaces; not Frank's environment",
+  "repo": "NESDUB/agent-runtime-atlas",
+  "instructions_blob_sha": "6cc319b3d60016a5058bafee769921dfb56c18c4",
+  "status_vocabulary": [
+    "verified",
+    "observed_unvalidated",
+    "inferred",
+    "not_tested",
+    "blocked"
+  ],
+  "source_report": "docs/reports/2026-11-21-jim-initial.md",
+  "capabilities": [
+    {
+      "id": "OS-001",
+      "surface": "container.shell",
+      "capability": "operating_system",
+      "status": "verified",
+      "procedure": "uname -srm; read /etc/os-release",
+      "result": "Debian GNU/Linux 13, Linux 6.18.57, x86_64"
+    },
+    {
+      "id": "EXEC-001",
+      "surface": "container.shell",
+      "capability": "shell_and_process_execution",
+      "status": "verified",
+      "procedure": "Run bash; Python subprocess sh -c printf",
+      "result": "bash 5.2.37; subprocess returned exit 0 and expected text"
+    },
+    {
+      "id": "EXEC-002",
+      "surface": "container.shell",
+      "capability": "python_runtime",
+      "status": "verified",
+      "procedure": "python --version; python -c print; opt-in probe",
+      "result": "Python 3.13.5, arithmetic returned 4"
+    },
+    {
+      "id": "EXEC-003",
+      "surface": "container.shell",
+      "capability": "node_runtime",
+      "status": "verified",
+      "procedure": "node --version; node -e arithmetic; opt-in probe",
+      "result": "Node v22.16.0, arithmetic returned 4"
+    },
+    {
+      "id": "EXEC-004",
+      "surface": "container.shell",
+      "capability": "git_cli",
+      "status": "verified",
+      "procedure": "git --version; opt-in probe",
+      "result": "Git 2.47.3; local command exit 0"
+    },
+    {
+      "id": "EXEC-005",
+      "surface": "container.shell",
+      "capability": "installed_command_versions",
+      "status": "verified",
+      "procedure": "Run version commands for known tools",
+      "result": "npm 10.9.2; gcc 14.2.0; clang 17.0.0; go 1.23.2; Java 21; FFmpeg 7.1.5; jq 1.7"
+    },
+    {
+      "id": "EXEC-006",
+      "surface": "container.shell",
+      "capability": "rust_tools_on_path",
+      "status": "blocked",
+      "procedure": "command -v cargo rustc",
+      "result": "Neither on PATH; not a claim of system-wide absence"
+    },
+    {
+      "id": "EXEC-007",
+      "surface": "container.shell",
+      "capability": "package_installation",
+      "status": "not_tested",
+      "procedure": "Requires independent safety approval",
+      "result": "No packages installed"
+    },
+    {
+      "id": "FS-001",
+      "surface": "container.shell",
+      "capability": "writable_mnt_data",
+      "status": "verified",
+      "procedure": "tempfile TemporaryDirectory, text write/read/cleanup; opt-in probe",
+      "result": "roundtrip passed"
+    },
+    {
+      "id": "FS-002",
+      "surface": "container.shell",
+      "capability": "writable_tmp",
+      "status": "verified",
+      "procedure": "tempfile TemporaryDirectory, text write/read/cleanup; opt-in probe",
+      "result": "roundtrip passed"
+    },
+    {
+      "id": "FS-003",
+      "surface": "container.shell",
+      "capability": "same_session_readback",
+      "status": "verified",
+      "procedure": "write /mnt/data marker and read in separate container tool call",
+      "result": "marker matched within chat session"
+    },
+    {
+      "id": "FS-004",
+      "surface": "python.tool",
+      "capability": "shared_working_mount",
+      "status": "verified",
+      "procedure": "Read container-created marker using separate Python tool",
+      "result": "marker matched within chat session"
+    },
+    {
+      "id": "FS-005",
+      "surface": "future_session",
+      "capability": "cross_session_persistence",
+      "status": "not_tested",
+      "procedure": "Rerun read in new chat session",
+      "result": "In-session readback insufficient"
+    },
+    {
+      "id": "SYS-001",
+      "surface": "container.shell",
+      "capability": "effective_uid_and_reported_cpus",
+      "status": "observed_unvalidated",
+      "procedure": "id -u; Python os.cpu_count",
+      "result": "uid=0 and reported CPUs=5; host privileges and quotas not established"
+    },
+    {
+      "id": "NET-001",
+      "surface": "container.shell",
+      "capability": "socket_object_creation",
+      "status": "verified",
+      "procedure": "socket.socket(AF_INET, SOCK_STREAM) then close; never connect",
+      "result": "object created successfully; no DNS/egress evidence"
+    },
+    {
+      "id": "NET-002",
+      "surface": "container.shell",
+      "capability": "direct_dns_and_https",
+      "status": "not_tested",
+      "procedure": "Consent needed before bounded external transmission",
+      "result": "No request attempted"
+    },
+    {
+      "id": "NET-003",
+      "surface": "connector.github",
+      "capability": "github_remote_read",
+      "status": "verified",
+      "procedure": "fetch_file AGENTS.md, get_repo, fetch directory/ref",
+      "result": "GitHub connector returned resources"
+    },
+    {
+      "id": "NET-004",
+      "surface": "web.tool",
+      "capability": "web_proxy_browsing",
+      "status": "not_tested",
+      "procedure": "Separate tool surface from shell",
+      "result": "Not invoked in this investigation"
+    },
+    {
+      "id": "GIT-001",
+      "surface": "connector.github",
+      "capability": "repo_permission_metadata",
+      "status": "observed_unvalidated",
+      "procedure": "get_repo.permissions",
+      "result": "push=true, pull=true, admin=true reported; not all endpoint rights exercised"
+    },
+    {
+      "id": "GIT-002",
+      "surface": "connector.github",
+      "capability": "branch_creation",
+      "status": "verified",
+      "procedure": "create_branch base_ref=main",
+      "result": "jim/initial-atlas-2026-11-21 created"
+    },
+    {
+      "id": "GIT-003",
+      "surface": "connector.github",
+      "capability": "file_commit_write",
+      "status": "verified",
+      "procedure": "create_file on new branch (probe/tests and docs)",
+      "result": "GitHub returned commit SHAs"
+    },
+    {
+      "id": "GIT-004",
+      "surface": "container.shell",
+      "capability": "authenticated_git_push",
+      "status": "not_tested",
+      "procedure": "Requires scoped network and authentication testing",
+      "result": "Local git executable working, no remote git push performed"
+    },
+    {
+      "id": "TOOLS-001",
+      "surface": "code_mode.javascript",
+      "capability": "tool_catalog_enumeration",
+      "status": "verified",
+      "procedure": "Enumerate ALL_TOOLS names and counts",
+      "result": "202 exposed actions: GitHub 89, Space 37, Gmail 21, Finances 14, Health 13, Files 11, Automations 7, Plugin Management 6, Skills 2, User Settings 2"
+    },
+    {
+      "id": "TOOLS-002",
+      "surface": "code_mode.javascript",
+      "capability": "all_exposed_actions_operate",
+      "status": "not_tested",
+      "procedure": "Requires per-action authorized probe",
+      "result": "Only selected GitHub actions exercised"
+    },
+    {
+      "id": "SCRIPT-001",
+      "surface": "container.shell",
+      "capability": "probe_passive_safety",
+      "status": "verified",
+      "procedure": "python -m py_compile; script default mode",
+      "result": "syntax passed; execution and IO correctly not_tested by default"
+    },
+    {
+      "id": "SCRIPT-002",
+      "surface": "container.shell",
+      "capability": "probe_optin_tests",
+      "status": "verified",
+      "procedure": "script --allow-exec --allow-temp-write",
+      "result": "4 subprocesses and 2 scratch directories verified"
+    },
+    {
+      "id": "SCRIPT-003",
+      "surface": "container.shell",
+      "capability": "unit_tests",
+      "status": "verified",
+      "procedure": "python -m unittest discover -s tests -v",
+      "result": "2 of 2 tests passed using local matching source"
+    },
+    {
+      "id": "COM-001",
+      "surface": "cross_agent",
+      "capability": "Frank_Gemma_delivery_ack",
+      "status": "not_tested",
+      "procedure": "Needs second agent and scoped handoff authorization",
+      "result": "not exercised"
+    },
+    {
+      "id": "COM-002",
+      "surface": "code_mode.javascript",
+      "capability": "unsupervised_background_execution",
+      "status": "not_tested",
+      "procedure": "Needs separately authorized automation scheduling",
+      "result": "not exercised"
+    }
+  ]
+}
