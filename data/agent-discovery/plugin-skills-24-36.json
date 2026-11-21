@@ -1,0 +1,210 @@
+{
+  "schema": "agent-runtime-atlas/skill-catalog-batch/v1",
+  "source": "skills__list and skills__read, current session",
+  "first_index": 24,
+  "last_index": 36,
+  "entries": [
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-team-alignment",
+      "description": "Create a presentation using the Team Alignment template and its retained reference file. Use when the user selects or names Team Alignment. Facilitate team offsites and planning with context, goals, priorities, decisions, and action items.",
+      "root_status": "readable",
+      "content_chars": 1824,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-team-alignment/skill.md",
+        "skills://plugins/openai-templates/artifact-template-team-alignment/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-team-alignment/assets/reference.pptx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-three-statement-forecast",
+      "description": "Create a spreadsheet using the Three-Statement Forecast template and its retained reference file. Use when the user selects or names Three-Statement Forecast. Build an integrated income statement, balance sheet, and cash flow forecast with assumptions, checks, and an executive summary.",
+      "root_status": "readable",
+      "content_chars": 1933,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-three-statement-forecast/skill.md",
+        "skills://plugins/openai-templates/artifact-template-three-statement-forecast/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-three-statement-forecast/assets/reference.xlsx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/template-creator/template-creator",
+      "description": "Create or update an installable personal ChatGPT artifact-template skill from a reference document, presentation, spreadsheet, Google Docs, Slides, or Sheets link, ImageGen or Product Design image, email, Slack message, or Site project. Use when the user selects Template Creator, asks to create a reusable template, or explicitly asks to update one exact personal template. Do not use for one-off creation from an existing template.",
+      "root_status": "readable",
+      "content_chars": 22302,
+      "bundled_resources_advertised": [
+        "skills://plugins/template-creator/template-creator/skill.md",
+        "skills://plugins/template-creator/template-creator/assets/site-preview.png",
+        "skills://plugins/template-creator/template-creator/host/export-google-workspace-file.mjs",
+        "skills://plugins/template-creator/template-creator/host/google-workspace-export-stdin-receiver.mjs",
+        "skills://plugins/template-creator/template-creator/scripts/create-template-skill.mjs",
+        "skills://plugins/template-creator/template-creator/scripts/package-template-skill.py",
+        "skills://plugins/template-creator/template-creator/scripts/tests/test_package_template_skill.py"
+      ],
+      "sample_headings": [
+        "Routing",
+        "Create workflow",
+        "Update workflow",
+        "Response"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/pages/maintain-space",
+      "description": "Reconcile new evidence into existing ChatGPT Pages or a Space when the user requests upkeep. For a direct text correction, use write-page. Do not use for ordinary chat drafts, writing, or advice, or treat a selected Page as a request to save. Schedule future upkeep only when requested.",
+      "root_status": "readable",
+      "content_chars": 6739,
+      "bundled_resources_advertised": [
+        "skills://plugins/pages/maintain-space/skill.md"
+      ],
+      "sample_headings": [
+        "Establish the upkeep scope",
+        "Reconcile rather than accumulate",
+        "Apply and report accurately",
+        "Examples"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/pages/manage-schedules",
+      "description": "Review a ChatGPT Space page and its schedules, recommend useful recurring work, and create, update, or remove scheduled automations.",
+      "root_status": "readable",
+      "content_chars": 7802,
+      "bundled_resources_advertised": [
+        "skills://plugins/pages/manage-schedules/skill.md"
+      ],
+      "sample_headings": [
+        "Page Background",
+        "General Schedule Management Workflow"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/pages/organize-space",
+      "description": "Organize existing ChatGPT Pages and Space structure when the user requests changes to that structure. Do not use for ordinary chat drafts or advice; a selected Page alone does not authorize reorganization. A narrow text edit does not need this workflow.",
+      "root_status": "readable",
+      "content_chars": 9098,
+      "bundled_resources_advertised": [
+        "skills://plugins/pages/organize-space/skill.md"
+      ],
+      "sample_headings": [
+        "Find the structure and purpose",
+        "Make the hierarchy useful",
+        "Apply real changes",
+        "Examples"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/pages/write-page",
+      "description": "Create or edit requested Page/Space content, or use for prose you have already decided to save as a standalone Markdown file, only if the user did not explicitly request a Markdown file. Honor established formats, destinations, and repository documentation. A selected Page alone does not authorize a write.",
+      "root_status": "readable",
+      "content_chars": 11105,
+      "bundled_resources_advertised": [
+        "skills://plugins/pages/write-page/skill.md",
+        "skills://plugins/pages/write-page/references/artifact-runtime.md",
+        "skills://plugins/pages/write-page/references/edit-requests.md",
+        "skills://plugins/pages/write-page/references/page-content.md",
+        "skills://plugins/pages/write-page/writing_quality.md"
+      ],
+      "sample_headings": [
+        "Titles and opening",
+        "Writing quality",
+        "Resolve the destination",
+        "Plan the edit"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/presentations-router/presentation",
+      "description": "route explicitly selected presentation or slide artifact requests to the preinstalled capability. use only when the user explicitly selects @presentation; never trigger from request content alone.",
+      "root_status": "readable",
+      "content_chars": 1375,
+      "bundled_resources_advertised": [
+        "skills://plugins/presentations-router/presentation/skill.md"
+      ],
+      "sample_headings": [
+        "Routing",
+        "Missing-target rule"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/pdf-router/pdf",
+      "description": "route explicitly selected pdf artifact requests to the preinstalled capability. use only when the user explicitly selects @pdf; never trigger from request content alone.",
+      "root_status": "readable",
+      "content_chars": 1098,
+      "bundled_resources_advertised": [
+        "skills://plugins/pdf-router/pdf/skill.md"
+      ],
+      "sample_headings": [
+        "Routing",
+        "Missing-target rule"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/documents-router/document",
+      "description": "route explicitly selected document artifact requests to the preinstalled capability. use only when the user explicitly selects @document; never trigger from request content alone.",
+      "root_status": "readable",
+      "content_chars": 922,
+      "bundled_resources_advertised": [
+        "skills://plugins/documents-router/document/skill.md"
+      ],
+      "sample_headings": [
+        "Routing",
+        "Missing-target rule"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/plugin-management/plugin-management",
+      "description": "Discover and suggest relevant plugins, inspect app permissions and dependencies, and manage plugin connections or removal. Use when the user asks about plugins or when a task would materially benefit from an external app, account, service, or data source that available tools cannot access.",
+      "root_status": "readable",
+      "content_chars": 3145,
+      "bundled_resources_advertised": [
+        "skills://plugins/plugin-management/plugin-management/skill.md"
+      ],
+      "sample_headings": [
+        "Choose the right capability",
+        "Find and suggest plugins",
+        "Manage existing plugins"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/spreadsheets-router/spreadsheet",
+      "description": "route explicitly selected spreadsheet artifact requests to the preinstalled capability. use only when the user explicitly selects @spreadsheet; never trigger from request content alone.",
+      "root_status": "readable",
+      "content_chars": 934,
+      "bundled_resources_advertised": [
+        "skills://plugins/spreadsheets-router/spreadsheet/skill.md"
+      ],
+      "sample_headings": [
+        "Routing",
+        "Missing-target rule"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/health/health",
+      "description": "Connect and explore your health data.",
+      "root_status": "readable",
+      "content_chars": 355,
+      "bundled_resources_advertised": [
+        "skills://plugins/health/health/skill.md"
+      ],
+      "sample_headings": [],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "schema": "agent-runtime-atlas/skill-catalog-batch/v1",
+  "source": "skills__list and skills__read, current session",
+  "first_index": 0,
+  "last_index": 11,
+  "entries": [
+    {
+      "uri": "skills://plugins/app-68de829bf7648191acd70a907364c67c/browse-collections",
+      "description": "Look inside Spotify content you already have a URI for. Use when the user asks what tracks are on a playlist or album, which episodes a podcast has, the chapters of an audiobook, or details about specific items already shown in the chat, or when a generated playlist's tracks are needed. Covers get_entity (metadata for up to 20 URIs) and get_collection_items (paginated contents, with polling for playlists still being generated). Do not use to discover content from text; use search for that.",
+      "root_status": "readable",
+      "content_chars": 4791,
+      "bundled_resources_advertised": [
+        "skills://plugins/app-68de829bf7648191acd70a907364c67c/browse-collections/skill.md"
+      ],
+      "sample_headings": [
+        "Pick the tool",
+        "get_entity",
+        "get_collection_items",
+        "Status and polling"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/app-68de829bf7648191acd70a907364c67c/build-playlists",
+      "description": "Creates and edits Spotify playlists. Use when the user explicitly asks to create, make, or generate a playlist, build one from songs discussed in the chat, or add, remove, rename, redescribe, or make collaborative an existing playlist. Excludes recommendations only, finding existing playlists, saving someone else's playlist, and audiobooks in playlists.",
+      "root_status": "readable",
+      "content_chars": 9332,
+      "bundled_resources_advertised": [
+        "skills://plugins/app-68de829bf7648191acd70a907364c67c/build-playlists/skill.md"
+      ],
+      "sample_headings": [
+        "Confirm intent first",
+        "Pick the path",
+        "generate_playlist",
+        "create_playlist + add_playlist_items"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/app-68de829bf7648191acd70a907364c67c/control-playback",
+      "description": "Controls Spotify playback, devices, and the queue. Use for play, pause, resume, skip, seek, shuffle, repeat, volume, queueing, switching devices, and questions about the queue, devices, or shuffle and repeat state. Excludes finding content (search-spotify), identifying the current track (now-playing), and library changes (manage-library).",
+      "root_status": "readable",
+      "content_chars": 6705,
+      "bundled_resources_advertised": [
+        "skills://plugins/app-68de829bf7648191acd70a907364c67c/control-playback/skill.md"
+      ],
+      "sample_headings": [
+        "Pick the tool",
+        "Getting something to play",
+        "Devices",
+        "Replying"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/app-68de829bf7648191acd70a907364c67c/manage-library",
+      "description": "Save or remove Spotify content in the user's library. Use when the user explicitly asks to save, like, add to library, follow an artist, podcast, or playlist (including one just made with `create_playlist`), or the reverse (unsave, unlike, remove, unfollow) for a track, album, playlist, artist, podcast show, episode, or audiobook. Do not use proactively, on behalf of third parties, or to add tracks to a playlist.",
+      "root_status": "readable",
+      "content_chars": 3705,
+      "bundled_resources_advertised": [
+        "skills://plugins/app-68de829bf7648191acd70a907364c67c/manage-library/skill.md"
+      ],
+      "sample_headings": [
+        "When to act",
+        "Getting the URI",
+        "Before calling",
+        "After calling"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/app-68de829bf7648191acd70a907364c67c/now-playing",
+      "description": "Tell the user what is playing on their Spotify right now. Use only when the user directly asks what song, track, episode, or audiobook is currently playing on Spotify, or explicitly refers to what is playing now. Not for \"this song\" when a song was just discussed in the chat. Do not call proactively. For play, pause, skip, queue, volume, devices, or shuffle and repeat state, use control-playback.",
+      "root_status": "readable",
+      "content_chars": 2762,
+      "bundled_resources_advertised": [
+        "skills://plugins/app-68de829bf7648191acd70a907364c67c/now-playing/skill.md"
+      ],
+      "sample_headings": [
+        "When to call",
+        "Using the result",
+        "Errors"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/app-68de829bf7648191acd70a907364c67c/search-spotify",
+      "description": "Finds and recommends Spotify music, podcasts, and audiobooks. Use for discovery, mood or activity requests, \"more like X\", known-title lookups, finding existing playlists, listening history, and saved-content queries. Excludes playlist creation or editing, library mutations, playback control, lyrics, concerts, artist bios, and music news.",
+      "root_status": "readable",
+      "content_chars": 8841,
+      "bundled_resources_advertised": [
+        "skills://plugins/app-68de829bf7648191acd70a907364c67c/search-spotify/skill.md"
+      ],
+      "sample_headings": [
+        "Pick the tool",
+        "Calling search",
+        "Calling query_catalog",
+        "Audiobooks"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-analytics-dashboard",
+      "description": "Create a spreadsheet using the Analytics Dashboard template and its retained reference file. Use when the user selects or names Analytics Dashboard. Monitor acquisition, engagement, retention, revenue, and conversion funnel KPIs with charts.",
+      "root_status": "readable",
+      "content_chars": 1863,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-analytics-dashboard/skill.md",
+        "skills://plugins/openai-templates/artifact-template-analytics-dashboard/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-analytics-dashboard/assets/reference.xlsx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-business-review",
+      "description": "Create a presentation using the Business Review template and its retained reference file. Use when the user selects or names Business Review. Review business performance, KPIs, segment results, strategic priorities, decisions, and outlook.",
+      "root_status": "readable",
+      "content_chars": 1829,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-business-review/skill.md",
+        "skills://plugins/openai-templates/artifact-template-business-review/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-business-review/assets/reference.pptx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-design-report",
+      "description": "Create a document using the Design Report template and its retained reference file. Use when the user selects or names Design Report. Produce design reports with an executive summary, key findings, implications, recommendations, and appendix.",
+      "root_status": "readable",
+      "content_chars": 1785,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-design-report/skill.md",
+        "skills://plugins/openai-templates/artifact-template-design-report/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-design-report/assets/reference.docx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-experiment-analysis",
+      "description": "Create a document using the Experiment Analysis template and its retained reference file. Use when the user selects or names Experiment Analysis. Analyze experiments with hypotheses, methodology, results, interpretation, limitations, and next steps.",
+      "root_status": "readable",
+      "content_chars": 1822,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-experiment-analysis/skill.md",
+        "skills://plugins/openai-templates/artifact-template-experiment-analysis/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-experiment-analysis/assets/reference.docx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-financial-budget",
+      "description": "Create a spreadsheet using the Financial Budget template and its retained reference file. Use when the user selects or names Financial Budget. Model actuals, budget and scenario forecasts, variances, cash runway, and departmental plans.",
+      "root_status": "readable",
+      "content_chars": 1843,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-financial-budget/skill.md",
+        "skills://plugins/openai-templates/artifact-template-financial-budget/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-financial-budget/assets/reference.xlsx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-investment-committee-memo",
+      "description": "Create a document using the Investment Committee Memo template and its retained reference file. Use when the user selects or names Investment Committee Memo. Prepare investment committee memos with the thesis, transaction details, financial analysis, risks, and recommendation.",
+      "root_status": "readable",
+      "content_chars": 1880,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-investment-committee-memo/skill.md",
+        "skills://plugins/openai-templates/artifact-template-investment-committee-memo/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-investment-committee-memo/assets/reference.docx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    }
+  ]
+}

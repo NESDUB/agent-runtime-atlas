@@ -1,0 +1,133 @@
+{
+  "schema": "agent-runtime-atlas/communication-p0/v1",
+  "scope": "repository-only Jim ↔ Gemma bounded test",
+  "authorization": {
+    "source": "https://github.com/NESDUB/agent-runtime-atlas/pull/2#issuecomment-7069984944",
+    "type": "NES approval via Gemma",
+    "limits": "no private data, no external shell networking, no host privileges, no persistent scheduling"
+  },
+  "event": {
+    "id": "jim-20261121T221041Z-p0-001",
+    "timestamp_utc": "2026-11-21T22:10:41Z",
+    "payload": "ATLAS-P0-v1|sender=Jim|recipient=Gemma|payload=harmless handshake verification",
+    "sha256": "53d0262c75affced76d14cd9b48216f283d9edbdc6562c35ce83ac833e931cfb",
+    "github_comment_id": 7069995269,
+    "url": "https://github.com/NESDUB/agent-runtime-atlas/pull/2#issuecomment-7069995269",
+    "github_created_at_utc": "2026-11-21T22:10:49Z"
+  },
+  "criteria": {
+    "published": "GitHub creates exactly one event comment with expected ID and payload hash",
+    "gemma_read": "Gemma independently fetches original event from own session and echoes exact ID/hash",
+    "gemma_ack": "Gemma publishes a new distinct ACK with original ID/hash and timestamp",
+    "jim_ack_read": "Jim reads ACK by GitHub API and verifies original ID/hash",
+    "duplicate_prevention": "same ID replay does not cause second logical acknowledgment or processing action; different payload with same ID is rejected"
+  },
+  "observations": [
+    {
+      "step": "Jim publish",
+      "status": "verified",
+      "method": "GitHub add_comment_to_issue PR #2",
+      "result": "comment ID 7069995269 returned"
+    },
+    {
+      "step": "Jim readback",
+      "status": "verified",
+      "method": "GitHub fetch_issue_comments PR #2",
+      "result": "one event comment with matching ID and expected SHA256 text"
+    },
+    {
+      "step": "Jim sender-side same-ID replay",
+      "status": "verified",
+      "method": "fetch current PR comments, match event-id, read-before-write; attempt repeated event processing",
+      "result": "found one existing event and suppressed repost; no second event comment created"
+    },
+    {
+      "step": "Gemma independent readback",
+      "status": "verified",
+      "result": "ACK 7070006503 explicitly states separate-session GitHub read and independently calculated payload hash matched; GitHub records common NESDUB identity",
+      "method": "Gemma's separately posted GitHub ACK, independent ChatGPT mobile session per its body"
+    },
+    {
+      "step": "Gemma distinct ACK",
+      "status": "verified",
+      "result": "ACK comment 7070006503 created 2026-11-21T22:11:43Z; references exact source event comment 7069995269 and original hash",
+      "method": "GitHub fetch_pr_comments for PR #2, observe independent new comment"
+    },
+    {
+      "step": "Jim readback of Gemma ACK",
+      "status": "verified",
+      "result": "event ID, origin comment ID, and SHA256 equal expected values; GitHub readback verified",
+      "method": "GitHub fetch_pr_comments (Jim); Python hashlib SHA256 of exact original payload"
+    },
+    {
+      "step": "receiver-side replay/idempotency",
+      "status": "verified",
+      "result": "Sequential duplicate detected; Gemma posted no second ACK; logical ACK count=1; result timestamp 2026-11-21T22:15:07Z",
+      "method": "Gemma independent read-after-replay and non-ACK result comment 7070047275; Jim fetched PR comments, verified ID/hash/references and counted one [GEMMA ACK]"
+    },
+    {
+      "step": "Jim replay injection",
+      "status": "verified",
+      "method": "GitHub add_comment_to_issue PR #2; fetch_pr_comments readback",
+      "result": "Replay comment 7070025294 with same event ID/hash published and read back at 2026-11-21T22:13:15Z"
+    },
+    {
+      "step": "Jim verified Gemma replay result",
+      "status": "verified",
+      "method": "GitHub fetch_pr_comments PR #2; exact event/hash/source/ACK/replay references checked; count matching logical ACKs",
+      "result": "Result 7070047275 at 2026-11-21T22:15:07Z matches all identifiers; one logical ACK; no failure observed"
+    }
+  ],
+  "limits": [
+    "All GitHub PR comments are written under linked NESDUB account; Gemma asserts separate ChatGPT mobile session. Separate session identity is not cryptographically proven.",
+    "Sequential replay/read-before-write idempotency was demonstrated once; concurrent writers, retries under race, crash recovery and corrupted-payload collision handling remain unverified.",
+    "No background polling or push notification, or voice delivery, was established; all steps initiated in active sessions.",
+    "No external shell network, private data, elevated/host operations or persistent scheduling were attempted."
+  ],
+  "ack": {
+    "status": "verified",
+    "github_comment_id": 7070006503,
+    "github_created_at_utc": "2026-11-21T22:11:43Z",
+    "url": "https://github.com/NESDUB/agent-runtime-atlas/pull/2#issuecomment-7070006503",
+    "event_id": "jim-20261121T221041Z-p0-001",
+    "origin_comment_id": 7069995269,
+    "payload_sha256": "53d0262c75affced76d14cd9b48216f283d9edbdc6562c35ce83ac833e931cfb",
+    "independent_gemma_read": "Gemma ACK states separate ChatGPT mobile session retrieved GitHub issue comments API and independently calculated UTF-8 SHA256; Jim verified this statement is present on GitHub but cannot independently authenticate the separate runtime from shared NESDUB account",
+    "jim_verification": "Retrieved PR #2 comments independently through GitHub connector; compared event_id/origin_comment_id/hash with original event; separately calculated exact payload SHA256 through Python hashlib; all matched"
+  },
+  "replay": {
+    "status": "verified_sequential_receiver_deduplication",
+    "github_comment_id": 7070025294,
+    "github_created_at_utc": "2026-11-21T22:13:15Z",
+    "url": "https://github.com/NESDUB/agent-runtime-atlas/pull/2#issuecomment-7070025294",
+    "event_id": "jim-20261121T221041Z-p0-001",
+    "payload_sha256": "53d0262c75affced76d14cd9b48216f283d9edbdc6562c35ce83ac833e931cfb",
+    "method": "Posted same logical event ID and identical payload with [JIM→GEMMA REPLAY] wrapper; requested Gemma independently detect existing ACK and suppress second logical ACK/action, report [GEMMA REPLAY RESULT] as separate non-ACK observation.",
+    "observed_ack_count_after_replay_publication": 1,
+    "receiver_duplicate_readback": "Gemma independently fetched replay and original ACK; confirmed same event ID and payload hash, suppressed second ACK, published non-ACK result comment 7070047275",
+    "failure_count_observed": 0,
+    "unresolved": "Concurrency races, crash recovery, independent cryptographic identity, notification delivery and background polling remain untested",
+    "receiver_result_comment_id": 7070047275,
+    "receiver_result_url": "https://github.com/NESDUB/agent-runtime-atlas/pull/2#issuecomment-7070047275",
+    "receiver_result_created_at_utc": "2026-11-21T22:15:07Z",
+    "confirmed_ack_count_after_receiver_processing": 1
+  },
+  "communication_cycle_status": "passed_bounded_sequential_roundtrip_and_receiver_replay",
+  "evidence_checked_at_utc": "2026-11-21T22:13:45Z",
+  "result_summary": {
+    "result": "PASS",
+    "scope": "Bounded, sequential repository-only Jim ↔ Gemma P0",
+    "event_comment_id": 7069995269,
+    "gemma_ack_comment_id": 7070006503,
+    "replay_comment_id": 7070025294,
+    "gemma_replay_result_comment_id": 7070047275,
+    "logical_ack_count": 1,
+    "failed_checks": 0,
+    "independent_evidence": "Jim fetched GitHub PR #2 and verified Gemma's declared separate-session replay result and one logical ACK",
+    "limitations": [
+      "Gemma's separate-session access is reported in a GitHub comment under the same NESDUB login; no independently authenticated agent identity",
+      "Only sequential duplicate suppression is verified, not concurrency/transactional uniqueness or crash recovery",
+      "No background polling or voice delivery verified"
+    ]
+  }
+}

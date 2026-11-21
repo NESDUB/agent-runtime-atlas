@@ -1,0 +1,50 @@
+{
+  "schema": "agent-runtime-atlas/persistence-seed/v1",
+  "agent": "Jim",
+  "scope": "current_chat_session_only",
+  "created_at_utc": "2026-11-21T22:25:24+00:00",
+  "marker": {
+    "id": "jim-2026-11-21-persistence-seed-01",
+    "path": "/mnt/data/atlas-session-marker-2026-11-21.json",
+    "sha256": "b66bd011b2ac115662fec44b4586e90e0b646585b1cb9270a58828cfceaad897",
+    "bytes": 215,
+    "contains_secrets": false,
+    "content_type": "application/json"
+  },
+  "observations": [
+    {
+      "surface": "local_sandbox",
+      "test": "seed with exclusive create, then same-invocation check",
+      "status": "verified",
+      "result": "byte hash, schema and marker ID match",
+      "limitation": "not cross-session verification"
+    },
+    {
+      "surface": "unit_tests",
+      "test": "python3 -m unittest discover -s /mnt/data/atlas_staging -p test_persistence_probe.py -v",
+      "status": "verified",
+      "result": "2 tests passed: roundtrip/overwrite/mismatch and missing-file no-create"
+    },
+    {
+      "surface": "new_session_local_sandbox",
+      "test": "read same exact path and compare SHA-256 without restoring file",
+      "status": "not_tested",
+      "result": "new session not yet invoked"
+    },
+    {
+      "surface": "conversation_file",
+      "test": "attachment carry-over without user reattachment",
+      "status": "not_tested",
+      "result": "not initiated"
+    },
+    {
+      "surface": "github_remote",
+      "test": "fetch manifest by commit in genuinely new session",
+      "status": "not_tested",
+      "result": "remote new-session durability not yet checked"
+    }
+  ],
+  "script_source_sha256": "e7a9dd1dc70a1b99f5d31f0d74f8c7756e280c3b4384938a67c322d86827e517",
+  "protocol": "docs/persistence-protocol.md",
+  "privacy": "harmless nonsecret marker; do not include environment dumps or credentials"
+}

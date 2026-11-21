@@ -1,0 +1,1233 @@
+{
+  "schema": "agent-runtime-atlas/tool-action-catalog/v1",
+  "environment_id": "jim-chatgpt-2026-11-21",
+  "source": "functions.exec ALL_TOOLS metadata (not local installed MCP binaries)",
+  "note": "Names and abbreviated public-purpose descriptions only. No action schemas, auth metadata, private data, connector tokens, or protected platform internals included. Tool discovery does not prove every action is usable.",
+  "total": 202,
+  "counts": {
+    "user_settings": 2,
+    "Gmail": 21,
+    "GitHub": 89,
+    "Finances": 14,
+    "Health": 13,
+    "Automations": 7,
+    "Plugin_Management": 6,
+    "ChatGPT_Space": 37,
+    "files": 11,
+    "skills": 2
+  },
+  "entries": [
+    {
+      "name": "user_settings__get_user_settings",
+      "family": "user_settings",
+      "description_excerpt": "Return the user's current settings along with descriptions and allowed values. Always call this FIRST to get the set of options available before asking for clarifying information (",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "user_settings__set_setting",
+      "family": "user_settings",
+      "description_excerpt": "Change one of the following settings: accent color, appearance (light/dark mode), or personality. Use get_user_settings to see the option enums available before changing. If it's a",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__apply_labels_to_emails",
+      "family": "Gmail",
+      "description_excerpt": "Apply labels to Gmail messages using label names rather than Gmail label IDs. This is the preferred labeling action for models because it avoids a separate label-id lookup step. Pr",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__archive_emails",
+      "family": "Gmail",
+      "description_excerpt": "Archive one or more existing Gmail messages by removing Gmail's INBOX label. Use this when the user wants messages removed from the inbox but kept in Gmail. The messages remain in ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__batch_modify_email",
+      "family": "Gmail",
+      "description_excerpt": "Add or remove Gmail labels on a batch of individual messages. This modifies messages, not whole threads. To label by subject, sender, or search query, search first or use bulk_labe",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__batch_read_email",
+      "family": "Gmail",
+      "description_excerpt": "Read multiple Gmail messages in a single call. Each successful result includes the message body plus metadata such as sender/recipient fields, subject, snippet, labels, timestamp, ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__batch_read_email_threads",
+      "family": "Gmail",
+      "description_excerpt": "Fetch multiple Gmail conversation threads in one call. Supply at least one non-empty message_ids or thread_ids list; message_ids take precedence when both are provided. Responses a",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__bulk_label_matching_emails",
+      "family": "Gmail",
+      "description_excerpt": "Apply a label to every Gmail message matching a Gmail search query. This action performs the search and label batching server-side, so it is suitable for very large backfills witho",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__create_draft",
+      "family": "Gmail",
+      "description_excerpt": "Create a Gmail draft without sending it. Use this when the user wants to review or manually send the message later in Gmail. Prefer HTML by default, even for simple messages; use p",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__create_label",
+      "family": "Gmail",
+      "description_excerpt": "Create a Gmail label. Use this when the user wants a new organizational label. If the label already exists, the existing label is returned instead of creating a duplicate.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__delete_emails",
+      "family": "Gmail",
+      "description_excerpt": "Move one or more existing Gmail messages to Trash. Use this when the user wants messages deleted from Gmail. This matches Gmail delete behavior and does not permanently delete the ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__forward_emails",
+      "family": "Gmail",
+      "description_excerpt": "Forward one or more existing Gmail messages. Each source message is sent as a separate forwarded email, with the original message inlined below any optional note in the forwarded b",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__get_profile",
+      "family": "Gmail",
+      "description_excerpt": "Return the current Gmail user's profile information.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__list_drafts",
+      "family": "Gmail",
+      "description_excerpt": "List Gmail drafts with summarized metadata so they can be reviewed or selected. Use this to review pending drafts or find a draft the user asked about.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__list_labels",
+      "family": "Gmail",
+      "description_excerpt": "List Gmail labels with per-label counts. Use this for questions like how many emails are in the inbox or unread, because Gmail exposes those totals directly on labels without pagin",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__read_attachment",
+      "family": "Gmail",
+      "description_excerpt": "Read one attachment from a Gmail message. First read/search the parent message and select an entry from its attachments, inline_images, or API-content MIME parts. For an attachment",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__read_email",
+      "family": "Gmail",
+      "description_excerpt": "Fetch a single Gmail message including its body.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__read_email_thread",
+      "family": "Gmail",
+      "description_excerpt": "Fetch an entire Gmail conversation thread. Supply at least one of message_id or thread_id; message_id takes precedence when both are provided. Do not pass placeholder values, Gmail",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__search_email_ids",
+      "family": "Gmail",
+      "description_excerpt": "Retrieve Gmail message IDs that match a search. If the user asks for important emails, search likely candidates and read/interpret them instead of treating Gmail system labels as t",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__search_emails",
+      "family": "Gmail",
+      "description_excerpt": "Search Gmail for emails matching a query or exact label IDs. If the user asks for important emails, search likely candidates and read/interpret them instead of treating Gmail syste",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__send_draft",
+      "family": "Gmail",
+      "description_excerpt": "Send an existing Gmail draft as currently stored. Use this only after the user has reviewed the saved draft or explicitly asked to send that draft.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__send_email",
+      "family": "Gmail",
+      "description_excerpt": "Send an email from the authenticated Gmail account. Use this only when the user wants the message sent now. Use create_draft instead when the user should review or manually send th",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Gmail__update_draft",
+      "family": "Gmail",
+      "description_excerpt": "Update an existing Gmail draft in place. Use this for targeted edits to a saved draft instead of recreating the draft. Omitted fields preserve the current draft content; pass an em",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__add_comment_to_issue",
+      "family": "GitHub",
+      "description_excerpt": "Create a top-level PR Conversation comment (Issue comment).",
+      "catalog_status": "called_successfully_in_current_conversation"
+    },
+    {
+      "name": "mcp__GitHub__add_issue_assignees",
+      "family": "GitHub",
+      "description_excerpt": "Add assignees to an issue or pull request. Returns a normalized issue snapshot after the mutation. Docs: https://docs.github.com/en/rest/issues/assignees?apiVersion=2022-11-28#add-",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__add_issue_labels",
+      "family": "GitHub",
+      "description_excerpt": "Add labels to an issue or pull request. Returns a normalized issue snapshot after the mutation. Docs: https://docs.github.com/en/rest/issues/labels?apiVersion=2022-11-28#add-labels",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__add_reaction_to_issue_comment",
+      "family": "GitHub",
+      "description_excerpt": "Add a reaction to an issue comment.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__add_reaction_to_pr",
+      "family": "GitHub",
+      "description_excerpt": "Add a reaction to a GitHub pull request.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__add_reaction_to_pr_review_comment",
+      "family": "GitHub",
+      "description_excerpt": "Add a reaction to a pull request review comment.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__add_review_to_pr",
+      "family": "GitHub",
+      "description_excerpt": "Add a review to a GitHub pull request. review is required for REQUEST_CHANGES and COMMENT events.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__compare_commits",
+      "family": "GitHub",
+      "description_excerpt": "Compare two commits/refs and return per-file stats plus compare metadata. This is a thin wrapper around `GithubPlugin.compare_commits` to provide a stable, compact response shape t",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__convert_pull_request_to_draft",
+      "family": "GitHub",
+      "description_excerpt": "Convert an open pull request back to draft state. Returns the connector's normalized PR snapshot after the transition. Docs: https://docs.github.com/en/graphql/reference/mutations#",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__create_blob",
+      "family": "GitHub",
+      "description_excerpt": "Create a blob in the repository and return its SHA.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__create_branch",
+      "family": "GitHub",
+      "description_excerpt": "Create a new branch from exactly one existing commit SHA or base ref.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__create_commit",
+      "family": "GitHub",
+      "description_excerpt": "Create a commit pointing to tree_sha with one or more parents.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__create_file",
+      "family": "GitHub",
+      "description_excerpt": "Create a new UTF-8 text file through GitHub's contents API. Returns only the resulting commit SHA, not GitHub's full content/commit payload. Docs: https://docs.github.com/en/rest/r",
+      "catalog_status": "called_successfully_in_current_conversation"
+    },
+    {
+      "name": "mcp__GitHub__create_issue",
+      "family": "GitHub",
+      "description_excerpt": "Create a GitHub issue. Returns a normalized issue snapshot, not GitHub's raw REST payload. Docs: https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#create-an-issue",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__create_pull_request",
+      "family": "GitHub",
+      "description_excerpt": "Open a pull request in the repository. Returns the connector's normalized PR snapshot, not the full REST response payload. Docs: https://docs.github.com/en/rest/pulls/pulls?apiVers",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__create_tree",
+      "family": "GitHub",
+      "description_excerpt": "Create a tree object in the repository from the given elements.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__delete_file",
+      "family": "GitHub",
+      "description_excerpt": "Delete a file through GitHub's contents API. Returns only the resulting commit SHA. Docs: https://docs.github.com/en/rest/repos/contents?apiVersion=2022-11-28#delete-a-file",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__dismiss_pull_request_review",
+      "family": "GitHub",
+      "description_excerpt": "Dismiss a submitted pull request review. Returns the normalized review snapshot after dismissal. Docs: https://docs.github.com/en/graphql/reference/mutations#dismisspullrequestrevi",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__download_user_content",
+      "family": "GitHub",
+      "description_excerpt": "Download a GitHub private user image attachment URL. Use this only for private-user-images.githubusercontent.com URLs, such as GitHub issue or pull request image uploads. Use fetch",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__download_workflow_artifact",
+      "family": "GitHub",
+      "description_excerpt": "Download a GitHub Actions workflow artifact ZIP archive. GitHub serves this endpoint through a temporary redirect; the underlying client follows that redirect before returning a re",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__enable_auto_merge",
+      "family": "GitHub",
+      "description_excerpt": "Enable auto-merge for a pull request. This wrapper infers the merge method from repository settings and returns only `success`. Docs: https://docs.github.com/en/graphql/reference/m",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch",
+      "family": "GitHub",
+      "description_excerpt": "Fetch approved public GitHub repository resources and repository files. Supports repositories, directories, code and issue search, and blob or raw file URLs. Pull requests, issues,",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_blob",
+      "family": "GitHub",
+      "description_excerpt": "Fetch blob content by SHA from the given repository.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_commit",
+      "family": "GitHub",
+      "description_excerpt": "Fetch a commit with its metadata, diff, and canonical URL.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_commit_workflow_runs",
+      "family": "GitHub",
+      "description_excerpt": "Fetch GitHub Actions workflow runs associated with a commit SHA. This wrapper currently filters to pull-request-triggered runs and returns the first page only. Docs: https://docs.g",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_file",
+      "family": "GitHub",
+      "description_excerpt": "Fetch file content by repository path, using the default branch when ref is omitted.",
+      "catalog_status": "called_successfully_in_current_conversation"
+    },
+    {
+      "name": "mcp__GitHub__fetch_issue",
+      "family": "GitHub",
+      "description_excerpt": "Fetch a GitHub issue. You must populate exactly one of `repository_full_name`, `repository_id`, or `repository_url` to select the issue's repository.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_issue_comments",
+      "family": "GitHub",
+      "description_excerpt": "Fetch comments for a GitHub issue across all pages.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_pr",
+      "family": "GitHub",
+      "description_excerpt": "Fetch a pull request with its diff, metadata, and optionally comments.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_pr_comments",
+      "family": "GitHub",
+      "description_excerpt": "Fetch a merged PR discussion timeline. The returned list combines issue comments, inline review comments, and review submissions into one normalized array. Docs: https://docs.githu",
+      "catalog_status": "called_successfully_in_current_conversation"
+    },
+    {
+      "name": "mcp__GitHub__fetch_pr_file_patch",
+      "family": "GitHub",
+      "description_excerpt": "Fetch the patch for one validated changed file in an accessible pull request. Call `list_pr_changed_filenames` first, then pass an exact returned path. A valid pull request that do",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_pr_patch",
+      "family": "GitHub",
+      "description_excerpt": "Fetch the patch for a GitHub pull request across all changed-file pages.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_workflow_job_logs",
+      "family": "GitHub",
+      "description_excerpt": "Fetch decoded logs for a GitHub Actions workflow job. GitHub serves this endpoint through a temporary redirect; the underlying client follows that redirect before decoding the byte",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_workflow_job_steps",
+      "family": "GitHub",
+      "description_excerpt": "Fetch steps for a GitHub Actions workflow job. Returns only step summaries, not the full job payload. Docs: https://docs.github.com/en/rest/actions/workflow-jobs?apiVersion=2022-11",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_workflow_run_artifacts",
+      "family": "GitHub",
+      "description_excerpt": "Fetch artifacts for a GitHub Actions workflow run. This wrapper returns the first page only. Docs: https://docs.github.com/en/rest/actions/artifacts?apiVersion=2022-11-28#list-work",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__fetch_workflow_run_jobs",
+      "family": "GitHub",
+      "description_excerpt": "Fetch jobs for a GitHub Actions workflow run. This wrapper returns the latest attempt's jobs from the first page only. Docs: https://docs.github.com/en/rest/actions/workflow-jobs?a",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_commit_combined_status",
+      "family": "GitHub",
+      "description_excerpt": "Fetch the combined CI status and individual status checks for a commit.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_issue_comment_reactions",
+      "family": "GitHub",
+      "description_excerpt": "Fetch reactions for an issue comment.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_pr_diff",
+      "family": "GitHub",
+      "description_excerpt": "Fetch just the diff or patch text for a pull request.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_pr_info",
+      "family": "GitHub",
+      "description_excerpt": "Get metadata (title, description, refs, and status) for a pull request. This action does *not* include the actual code changes. If you need the diff or per-file patches, call `fetc",
+      "catalog_status": "called_successfully_in_current_conversation"
+    },
+    {
+      "name": "mcp__GitHub__get_pr_reactions",
+      "family": "GitHub",
+      "description_excerpt": "Fetch reactions for a GitHub pull request.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_pr_review_comment_reactions",
+      "family": "GitHub",
+      "description_excerpt": "Fetch reactions for a pull request review comment.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_profile",
+      "family": "GitHub",
+      "description_excerpt": "Retrieve the GitHub profile for the authenticated user.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_repo",
+      "family": "GitHub",
+      "description_excerpt": "Retrieve metadata for a GitHub repository. You must populate exactly one of `repository_full_name`, `repository_id`, or `repository_url`: - `repository_full_name`: `owner/name`, su",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_repo_collaborator_permission",
+      "family": "GitHub",
+      "description_excerpt": "Return the collaborator permission level for a user on a repository.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_user_login",
+      "family": "GitHub",
+      "description_excerpt": "Return the GitHub login for the authenticated user.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__get_users_recent_prs_in_repo",
+      "family": "GitHub",
+      "description_excerpt": "List the user's recent GitHub pull requests in a repository. `limit` is the final number of PRs returned. The connector paginates the underlying GitHub search endpoint to satisfy l",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__label_pr",
+      "family": "GitHub",
+      "description_excerpt": "Label a pull request.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_installations",
+      "family": "GitHub",
+      "description_excerpt": "List accessible installations, optionally filtering to managed setup accounts.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_installed_accounts",
+      "family": "GitHub",
+      "description_excerpt": "List all accounts that the user has installed our GitHub app on.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_pr_changed_filenames",
+      "family": "GitHub",
+      "description_excerpt": "List changed filenames for a PR across all paginated file-list pages.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_pull_request_review_threads",
+      "family": "GitHub",
+      "description_excerpt": "List inline review threads on a pull request, including resolved state. Returns GraphQL review thread nodes, including comment bodies and resolution metadata. Docs: https://docs.gi",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_pull_request_reviews",
+      "family": "GitHub",
+      "description_excerpt": "List review submissions on a pull request. Returns GraphQL review nodes normalized into the connector's review model. Docs: https://docs.github.com/en/graphql/reference/objects#pul",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_recent_issues",
+      "family": "GitHub",
+      "description_excerpt": "Return the most recent GitHub issues the user can access. `top_k` is the final result limit. The connector transparently paginates GitHub's issues API until that limit is reached o",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_repositories",
+      "family": "GitHub",
+      "description_excerpt": "List repositories accessible to the authenticated user.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_repositories_by_affiliation",
+      "family": "GitHub",
+      "description_excerpt": "List repositories accessible to the authenticated user filtered by affiliation.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_repositories_by_installation",
+      "family": "GitHub",
+      "description_excerpt": "List repositories accessible to the authenticated user.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_user_org_memberships",
+      "family": "GitHub",
+      "description_excerpt": "List the authenticated user's organization memberships.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__list_user_orgs",
+      "family": "GitHub",
+      "description_excerpt": "List organizations the authenticated user is a member of.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__lock_issue_conversation",
+      "family": "GitHub",
+      "description_excerpt": "Lock an issue or pull request conversation. Allowed `lock_reason` values are `off-topic`, `too heated`, `resolved`, and `spam`. Docs: https://docs.github.com/en/rest/issues/issues?",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__mark_pull_request_ready_for_review",
+      "family": "GitHub",
+      "description_excerpt": "Mark a draft pull request as ready for review. Returns the connector's normalized PR snapshot after the transition. Docs: https://docs.github.com/en/graphql/reference/mutations#mar",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__merge_pull_request",
+      "family": "GitHub",
+      "description_excerpt": "Merge a pull request immediately. Returns GitHub's merge result payload (`sha`, `merged`, `message`). Docs: https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#merge-",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__remove_issue_assignees",
+      "family": "GitHub",
+      "description_excerpt": "Remove assignees from an issue or pull request. Returns a normalized issue snapshot after the mutation. Docs: https://docs.github.com/en/rest/issues/assignees?apiVersion=2022-11-28",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__remove_issue_label",
+      "family": "GitHub",
+      "description_excerpt": "Remove one label from an issue or pull request. Returns a normalized issue snapshot after the mutation. Docs: https://docs.github.com/en/rest/issues/labels?apiVersion=2022-11-28#re",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__remove_pull_request_reviewers",
+      "family": "GitHub",
+      "description_excerpt": "Remove individual or team reviewer requests from a pull request. Returns the connector's normalized PR snapshot after the mutation. Docs: https://docs.github.com/en/rest/pulls/revi",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__remove_reaction_from_issue_comment",
+      "family": "GitHub",
+      "description_excerpt": "Remove a reaction from an issue comment.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__remove_reaction_from_pr",
+      "family": "GitHub",
+      "description_excerpt": "Remove a reaction from a GitHub pull request.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__remove_reaction_from_pr_review_comment",
+      "family": "GitHub",
+      "description_excerpt": "Remove a reaction from a pull request review comment.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__reply_to_review_comment",
+      "family": "GitHub",
+      "description_excerpt": "Reply to an inline review comment on a PR (Files changed thread). comment_id must be the ID of the thread’s top-level inline review comment (replies-to-replies are not supported by",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__request_pull_request_reviewers",
+      "family": "GitHub",
+      "description_excerpt": "Request individual or team reviewers on a pull request. Returns the connector's normalized PR snapshot after the review request mutation. Docs: https://docs.github.com/en/rest/pull",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__rerun_failed_workflow_run_jobs",
+      "family": "GitHub",
+      "description_excerpt": "Re-run all failed jobs in a GitHub Actions workflow run. Use this to retry only the failed jobs from a workflow run, instead of starting a full new attempt for successful jobs too.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__rerun_workflow_job",
+      "family": "GitHub",
+      "description_excerpt": "Re-run one GitHub Actions workflow job. Use this when a specific failed or cancelled job should be retried without re-running every failed job in the workflow run. The linked GitHu",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__resolve_review_thread",
+      "family": "GitHub",
+      "description_excerpt": "Resolve an inline pull request review thread. Docs: https://docs.github.com/en/graphql/reference/mutations#resolvereviewthread",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__search",
+      "family": "GitHub",
+      "description_excerpt": "Search GitHub files and return matching excerpts when available. Provide a plain string query, avoid GitHub query flags such as ``is:pr``. Include keywords that match file names, f",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__search_branches",
+      "family": "GitHub",
+      "description_excerpt": "Search GitHub branches within a repository.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__search_commits",
+      "family": "GitHub",
+      "description_excerpt": "Search GitHub commits globally, by organization, or optionally by repository. Include at least one non-qualifier search term in the query. To list recent commits without matching t",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__search_installed_repositories_streaming",
+      "family": "GitHub",
+      "description_excerpt": "Search for a repository (not a file) by name or description. To search for a file, use `search`.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__search_installed_repositories_v2",
+      "family": "GitHub",
+      "description_excerpt": "Search repositories within the user's installations using GitHub search.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__search_issues",
+      "family": "GitHub",
+      "description_excerpt": "Search one repository or every repository the linked account can access. Supply at most one repository selector. Empty lists mean no repository filter. A `repo:owner/name` query do",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__search_prs",
+      "family": "GitHub",
+      "description_excerpt": "Search GitHub pull requests globally, by organization, or optionally by repository.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__search_repositories",
+      "family": "GitHub",
+      "description_excerpt": "Search for a repository (not a file) by name or description. To search for a file, use `search`.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__unlock_issue_conversation",
+      "family": "GitHub",
+      "description_excerpt": "Unlock an issue or pull request conversation. Docs: https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#unlock-an-issue",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__unresolve_review_thread",
+      "family": "GitHub",
+      "description_excerpt": "Mark an inline pull request review thread as unresolved. Docs: https://docs.github.com/en/graphql/reference/mutations#unresolvereviewthread",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__update_file",
+      "family": "GitHub",
+      "description_excerpt": "Replace a UTF-8 text file through GitHub's contents API. Returns the resulting commit SHA and content blob SHA. Use `content_sha` for a subsequent sequential update. Do not run upd",
+      "catalog_status": "called_successfully_in_current_conversation"
+    },
+    {
+      "name": "mcp__GitHub__update_issue",
+      "family": "GitHub",
+      "description_excerpt": "Update a GitHub issue, including title/body, state, labels, assignees, or milestone. Returns a normalized issue snapshot after the patch. Docs: https://docs.github.com/en/rest/issu",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__update_issue_comment",
+      "family": "GitHub",
+      "description_excerpt": "Update a top-level PR Conversation comment (Issue comment).",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__update_pull_request",
+      "family": "GitHub",
+      "description_excerpt": "Update PR metadata, base branch, or open/closed state. Returns the connector's normalized PR snapshot. Docs: https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#updat",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__update_ref",
+      "family": "GitHub",
+      "description_excerpt": "Move a branch ref to a commit, rejecting a mismatched expected_sha. Inspect the new branch head before retrying a rejected lease.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__GitHub__update_review_comment",
+      "family": "GitHub",
+      "description_excerpt": "Update an inline review comment (or a reply) on a PR.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__add_to_watchlist",
+      "family": "Finances",
+      "description_excerpt": "Add one stock, fund, cryptocurrency, or index to the user's default Finances watchlist, then complete the briefing flow below before finishing. Repeated additions are idempotent. T",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__clear_watchlist",
+      "family": "Finances",
+      "description_excerpt": "Remove every saved instrument from the user's default Finances watchlist while preserving the watchlist itself. Only use this when the user asks to clear the entire watchlist. Comp",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__create_financial_memory",
+      "family": "Finances",
+      "description_excerpt": "Create a persistent financial memory in Finances. Financial memories let the user teach Finances how to interpret future financial data without mutating the stored provider data. W",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__delete_financial_memory",
+      "family": "Finances",
+      "description_excerpt": "Delete a financial memory by id in Finances. Deleting a memory stops its future effect on Finances interpretations and widgets, but does not change the underlying provider data.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__get_credit_score",
+      "family": "Finances",
+      "description_excerpt": "Use for questions about the authenticated user's own credit score, credit report, reported score changes, score factors, credit utilization, or personal credit goals such as improv",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__get_linked_accounts",
+      "family": "Finances",
+      "description_excerpt": "Get the user's linked financial accounts, account ids, sync status, accounts materialized from financial memories, and manually tracked asset memories (for example, homes or vehicl",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__get_watchlist",
+      "family": "Finances",
+      "description_excerpt": "Return the user's default Finances market watchlist and its saved stocks, funds, cryptocurrencies, or indexes without creating an empty watchlist. Call this at the start of every s",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__list_financial_memories",
+      "family": "Finances",
+      "description_excerpt": "List persistent financial memories in Finances. Financial memories store user-provided rules, structured rows, budgets, savings goals, and manually tracked non-monetary assets that",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__manage_linked_accounts",
+      "family": "Finances",
+      "description_excerpt": "For bank-account removal requests, resolve scope before calling this tool or giving disconnection instructions. When the user is editing a report or calculation, removing an accoun",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__query",
+      "family": "Finances",
+      "description_excerpt": "Before calling `query`, read this tool's complete description. If discovery output is truncated, retrieve the missing text in smaller sections.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__remove_from_watchlist",
+      "family": "Finances",
+      "description_excerpt": "Remove the matching ticker from the user's default Finances watchlist. Match existing saved instruments by ticker and asset type, regardless of their internal instrument identifier",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__resync_linked_account",
+      "family": "Finances",
+      "description_excerpt": "Start a full resync for a linked account. The item_id is the \"item_id\" field, not the \"id\" field. A `resync_started` result only acknowledges that an asynchronous refresh was reque",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__run_widget_query",
+      "family": "Finances",
+      "description_excerpt": "Choose a matching built-in feed before generic `query`, unless the user requests text only. Portfolio by account: `{\"query\":{\"source\":\"ledger_account_breakdown_source\"}}`; includes",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Finances__update_financial_memory",
+      "family": "Finances",
+      "description_excerpt": "Replace an existing financial memory by id in Finances. Use this to fully replace the nested `memory` payload; future Finances behavior will use the new memory definition after any",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__aggregate_timeseries_file",
+      "family": "Health",
+      "description_excerpt": "Aggregate the user's synced Apple Health or Android Health Connect measurements for specified metrics and a time window. Use for de-duplicated totals, exact counts, custom time buc",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__fetch_characteristics",
+      "family": "Health",
+      "description_excerpt": "Apple Health only: return the user's most recent synced static characteristics. This does not search provider medical records, clinical diagnoses, or user-reported reconciliation d",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__health_summary",
+      "family": "Health",
+      "description_excerpt": "General starting point for most questions about the authenticated user's connected health data. Returns a condensed cross-source snapshot that can include data from Apple Health or",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__list_account_connections",
+      "family": "Health",
+      "description_excerpt": "List the user's Health account connections with their connection id, organizationId, connectionState (connected or expired), lastSyncTime, and operationStatus (idle, syncing, or de",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__open_medical_resource",
+      "family": "Health",
+      "description_excerpt": "Open a Health link returned by a prior Health response for detailed analysis. Use this for connected provider or clinical records and other linked Health resources when the answer ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__query_samples_file",
+      "family": "Health",
+      "description_excerpt": "Query the user's synced Apple Health or Android Health Connect samples for specified metrics and a time window. Small results remain inline. Large results use a short summary and a",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__read_health_profile",
+      "family": "Health",
+      "description_excerpt": "Read one Health profile section before making targeted updates. Optionally search the condition or medication catalog by name. Reuse returned selections/concepts; never invent code",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__search_providers",
+      "family": "Health",
+      "description_excerpt": "Search Health's medical-record provider directory using a concise provider name. Each query word must match the provider's name or description. Returns up to 25 providers with IDs,",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__show_connection_suggestions",
+      "family": "Health",
+      "description_excerpt": "Show options for connecting or reconnecting medical records or Apple Health. For an expired connection, reuse its organizationId from list_account_connections without searching. If",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__sync_account_connection",
+      "family": "Health",
+      "description_excerpt": "Sync an active Health provider connection to fetch updated records, such as when a question concerns results newer than lastSyncTime. Get the connection ID and current status from ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__update_health_profile",
+      "family": "Health",
+      "description_excerpt": "Save only the specified changes to the user's Health profile. A clear explicit request to update the profile authorizes that change. For information merely shared in conversation, ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__view_all_metrics",
+      "family": "Health",
+      "description_excerpt": "List supported metrics and query capabilities for Apple Health or Android Health Connect; this does not check whether the user has data. This does not search provider medical recor",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Health__view_synced_metrics",
+      "family": "Health",
+      "description_excerpt": "List metrics with synced data and their available date ranges for Apple Health or Android Health Connect. This does not search provider medical records or user-reported reconciliat",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Automations__create",
+      "family": "Automations",
+      "description_excerpt": "Create a task automation. Provide a short imperative title, a prompt written as the user's request without scheduling details, and an iCal VEVENT schedule. Use dtstart_offset_json ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Automations__get",
+      "family": "Automations",
+      "description_excerpt": "Read one task's saved instructions and context version by automation ID.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Automations__list_event_sources",
+      "family": "Automations",
+      "description_excerpt": "List connected apps with supported automation events. Call this before discover_webhook_schema, then pass the chosen source's connector_id as connector_type. Call again after conne",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Automations__notify_parent",
+      "family": "Automations",
+      "description_excerpt": "Deliver a model-visible notification to this thread's current parent target without adding a user message to its transcript. Resolves the stored parent and follows the user's dot's",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Automations__peek",
+      "family": "Automations",
+      "description_excerpt": "Privately look up task automations without displaying the list to the user.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Automations__run_now",
+      "family": "Automations",
+      "description_excerpt": "Run an existing enabled task automation once now by jawbone_id, using its saved prompt without changing its schedule. Use only when the user asks for an immediate run. Look up the ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Automations__update",
+      "family": "Automations",
+      "description_excerpt": "Update an existing task automation by `jawbone_id`. Omitted fields keep their current values. Set `is_enabled=false` to pause the automation and `is_enabled=true` to resume it. Use",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Plugin_Management__get_app_permissions",
+      "family": "Plugin_Management",
+      "description_excerpt": "Inspect one named ChatGPT plugin's global/default and plugin-specific permission settings. Use when the user asks what the plugin may read, write, or do, whether it must ask first,",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Plugin_Management__get_plugin_dependencies",
+      "family": "Plugin_Management",
+      "description_excerpt": "Resolve the canonical public plugins declared by one plugin's app manifest. Use only when a skill or user explicitly asks for dependency metadata. Pass a plugin ID or name@marketpl",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Plugin_Management__search_plugins",
+      "family": "Plugin_Management",
+      "description_excerpt": "Search available plugins when the user explicitly requests a plugin or provider, or when their task would benefit from an external app, account, service, data source, or capability",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Plugin_Management__suggest_plugins",
+      "family": "Plugin_Management",
+      "description_excerpt": "Suggest plugins when an external integration would help the user. The user does not need to mention plugins or installation. Call plugin_management.search_plugins for relevant miss",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Plugin_Management__uninstall_app",
+      "family": "Plugin_Management",
+      "description_excerpt": "Uninstall ChatGPT plugins only for explicit uninstall, remove, or disconnect intent. Pass every exact, user-approved target in one call. For a missing/broad target such as Google, ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__Plugin_Management__update_app_permissions",
+      "family": "Plugin_Management",
+      "description_excerpt": "Update global ChatGPT plugin permissions or a plugin-specific override. Omit app_id for global-only updates and provide it for plugin-specific updates. Map Always ask to always_ask",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__create_template",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Mark an existing Page or Slide deck as a reusable template. Requires Page write access. The existing file becomes the template; its content and location are preserved. This saves t",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__edit_page_metadata",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Edit Page metadata. For a Plan, read_page first, then set namespace_properties using namespace_properties_schema_version as schema_version and namespace_properties_revision as expe",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__search_templates",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "List saved Page and Slides templates, or search by title or description. Omit query to list templates. Set template_type when the user asks for one type. Use the results after one ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__list_spaces",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "List Drive-backed Spaces available to your authenticated ChatGPT account. Items include the Space id, name and root_page_id. Use these directly when they answer the request. Follow",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__get_space",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Read an accessible Drive-backed ChatGPT Space. Use a verified Space ID directly, including the exact ID from a supplied Space link. For unverified IDs from notes or previous runs, ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__duplicate_page",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Duplicate a text Page or native Slides deck, including its referenced files. Copies only the selected item. Start once, then call with action=status and the same page_id and operat",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__use_native_template",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Create an editable copy of a saved native Page or Slides deck marked as a template. Pass the exact source page_id without operation_id to prepare a copy. When status is prepared, c",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__trash_space",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Move an entire Space and its Pages to Trash. If the response is archiving, call action=status with the same space_id and operation_id. If the response is uncertain and includes an ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__trash_page",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Request that a Page and its nested Pages move to Trash. Check an archiving or uncertain receipt with action=status and the same page_id and operation_id. A result with trashed=true",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__get_sharing_availability",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Check whether sharing management is enabled for the active account. If disabled, explain the restriction and stop sharing management until the account or policy changes. get_page_s",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__search_sharing_recipients",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Call get_sharing_availability first. If disabled, explain the account restriction and stop sharing management. get_page_sharing can still check your own Page's owner-only access; t",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__get_page_sharing",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "List a Page's visible collaborator grants, link access, and inherited access. The roster requires Page read access, owner or editor authority, and sharing management enabled for th",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__update_page_sharing",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Call get_sharing_availability first. If disabled, explain the account restriction and stop sharing management. get_page_sharing can still check your own Page's owner-only access; t",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__get_space_sharing",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Call get_sharing_availability first. If disabled, explain the account restriction and stop sharing management. get_page_sharing can still check your own Page's owner-only access; t",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__update_space_sharing",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Call get_sharing_availability first. If disabled, explain the account restriction and stop sharing management. get_page_sharing can still check your own Page's owner-only access; t",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__list_pages",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "List accessible Pages, optionally within a Space. Results include document_type for native documents; omission means an ordinary Page. Use parent_page_id to list a directly shared ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__search_page_file_references",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Search indexed Library files linked directly from one Page. Pass its page_id and the question or terms to look for as query. For a title, call find_pages with the Space ID when kno",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__find_pages",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Find accessible Pages matching a query, optionally within one Space. Results are bounded, not an exhaustive listing. For search results, when next_cursor is non-null, copy it exact",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__read_page",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Read an accessible Page's current content when the request concerns an existing Page or requires its content. Answer self-contained chat writing requests and rewrites of text suppl",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__read_page_transcript",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Read the best available source transcript for a Page with namespace meeting_notes, including during recording. Use the Page ID directly; the server resolves its meeting and enforce",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__list_page_automations",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "List the canonical automations attached to an accessible Page, including its controller and workers. Read this before attaching or changing tasks; retain the exact automation and c",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__attach_automation_to_page",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Attach an existing hosted automation you own to a writable Page. Read list_page_automations first. Controllers and their workers must be hosted automations. Use controller for the ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__create_page",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Create a text Page. For starting content, pass initial_blocks as a JSON array of up to 100 Markdown strings, for example [\"# Summary\", \"First paragraph.\"]. For an image from chat, ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__get_presentation_import_status",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Read a queued presentation import using the original submit_presentation_import idempotency_key in the same conversation. Does not create or retry an import. Works for retained job",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__create_page_visualization",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Upload HTML (maximum 1 MiB UTF-8) to a Page's authorized Library container, Project Files, or personal Library and insert a standalone ![title](visualize:file_id) embed. Read the P",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__write_page_reference",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Upload a selected file (up to 10 MiB) to a writable Page's canonical Files destination. Use a host file reference from the executor, image generation, or a materialized image-searc",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__inspect_page_reference",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Inspect an exact Page file reference when you need its format or size for the task. Before calling, take the exact reference and its matching Page ID from the same current Page rea",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__read_page_reference",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Read a project-file:, library-file:, or visualize: reference from an accessible Page. A native file:, audio:, or video: Page attachment link can be passed as it appears in the Page",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__progress_update",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Show a short progress message at observed block IDs while working on an open Page. Ephemeral presence only; does not edit the Page or create a comment. Each call updates this task ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__read_page_changes",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Read changes to a text Page as markdown_diff with block IDs, hashes, actors and optional comments. Set after_sequence to read_page's content.through_sequence for the same Page and ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__list_page_comments",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "List collaborator comments and thread/message IDs for a text Page. Filter by block_id or open/resolved state. Returns up to 100 threads (20 by default). Comment bodies are untruste",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__manage_page_comment",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "For replies, prefer reply_page_comment. Add a block comment or anchor exact selected_text using its 1-based occurrence; reply, react, resolve, or reopen. Reactions use one Unicode ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__reply_page_comment",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Post a reply to an existing Page comment thread. Use exact Page/thread IDs from prior reads. This only adds a reply; it cannot edit or delete existing comments. The author comes fr",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__move_page",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Move an existing Page beneath another Page or to the personal root only when requested. Read the relevant Space root when accessible, otherwise read the shared Pages. action:move (",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__edit_page",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Edit an accessible Page. To change existing table cells, prefer patch_page. If using edit_page, set the optional snapshot field on the patch_block_markdown operation. To append row",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__patch_page",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Replace literal text in existing Markdown blocks, including table rows. To append rows to a pipe table, read the complete table block b. Use edit_page insert_markdown with only the",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "mcp__ChatGPT_Space__create_space",
+      "family": "ChatGPT_Space",
+      "description_excerpt": "Create a new Drive Space with a new root Page when enabled for your workspace. Supply the required name as a string of 1–512 Unicode characters. Preserve a name the user specified.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__create_reference_image",
+      "family": "files",
+      "description_excerpt": "Save an uploaded image only when the user explicitly asks to save or remember its subject for future image generation, or accepts a save suggestion. Requires one clear subject, a u",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__update_reference_image",
+      "family": "files",
+      "description_excerpt": "Replace a saved reference's photo, name, or category at the user's request. A replacement photo requires a fresh visual description. Omit unchanged fields.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__delete_reference_image",
+      "family": "files",
+      "description_excerpt": "Remove a saved reference image by its exact reference ID at the user's request.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__list_reference_images",
+      "family": "files",
+      "description_excerpt": "List saved reference images, optionally filtering by exact name. Follow next_cursor to complete a name lookup.",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__list",
+      "family": "files",
+      "description_excerpt": "List ChatGPT conversation files or browse the user's file library. Supports metadata filters for file types and dates, including the special file type 'folder' for folder-only libr",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__search",
+      "family": "files",
+      "description_excerpt": "Default first choice for broad content questions or when the relevant location is unknown; this is ranked semantic search. Use one top-level search_query array with q strings only;",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__read",
+      "family": "files",
+      "description_excerpt": "Read a known file or range, or expand a relevant search/find result; do not use as the first step for broad retrieval. Pass one read item per independent file/range, at most 5 item",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__find",
+      "family": "files",
+      "description_excerpt": "Find literal or regex text matches within a known ChatGPT conversation or file-library file. Use a ref/id visible in the conversation or returned by a prior Files result; do not in",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__materialize",
+      "family": "files",
+      "description_excerpt": "Copy a visible conversation or library file into the model's working container for programmatic use. Do not call this tool merely to use an automatically mounted conversation attac",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__manage_library",
+      "family": "files",
+      "description_excerpt": "Manage the user's persistent file library. Accepts upload, move, rename, delete, and create_folder operations and reports per-operation status. Upload copies a container file path ",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "files__share",
+      "family": "files",
+      "description_excerpt": "Share one persistent Library file or folder you own or can edit with one existing verified user or everyone in the current workspace as a viewer or editor. Before granting or chang",
+      "catalog_status": "exposed_not_individually_tested"
+    },
+    {
+      "name": "skills__read",
+      "family": "skills",
+      "description_excerpt": "Read an available skill's complete instructions or a supporting file. For listed reference files, append the exact relative path to the skill root URI and read it with this tool. P",
+      "catalog_status": "called_successfully_in_current_conversation"
+    },
+    {
+      "name": "skills__list",
+      "family": "skills",
+      "description_excerpt": "List available skills and their descriptions.",
+      "catalog_status": "called_successfully_in_current_conversation"
+    }
+  ]
+}
