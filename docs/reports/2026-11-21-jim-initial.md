@@ -1,65 +1,67 @@
-# Initial execution environment investigation — Jim
+# Jim — initial execution environment investigation
 
-**Date:** 2026-11-21 UTC (initial OS probes near 21:48 UTC)
-**Environment:** jim-chatgpt-session-2026-11-21, separate from Frank
-**Methods:** ChatGPT tool orchestrator, sandbox shell, Python tool, connected GitHub API
-**Scope:** current session only; no persistent or cross-agent capabilities assumed
+**Date:** 2026-11-21 UTC (initial OS observations near 21:48 UTC)
+**Environment ID:** jim-chatgpt-session-2026-11-21
+**Surfaces:** ChatGPT JavaScript tool orchestrator, shell container, Python tool, connected GitHub API
+**Scope:** Jim's current session, independent of any other agent
 
-## Instructions and repository baseline
+## Instructions and scope provenance
 
-Fetched the complete AGENTS.md from NESDUB/agent-runtime-atlas main using the GitHub connector. Initial blob SHA: 6cc319b3d60016a5058bafee769921dfb56c18c4. GitHub metadata identified a public repository with default branch main; reported permissions included pull=true, push=true and admin=true. Metadata alone is not a functional test of every endpoint.
+Read AGENTS.md from NESDUB/agent-runtime-atlas/main through GitHub. During the investigation the file was updated. **Current instructions** are blob SHA a06f8d98e4523bc6f1487774876bd8e5439a82ee: a Jim ↔ Gemma-only project with no involvement of other research agents or repositories. The earlier observed AGENTS.md SHA 6cc319b3d60016a5058bafee769921dfb56c18c4 is superseded. The investigation artifacts were revised to follow the updated scope.
 
-The initial GitHub write test created a dedicated branch, jim/initial-atlas-2026-11-21, and published the offline Python probe plus tests using authenticated repository file creation. No merge or LoopyLogic modification was attempted.
+The repository is public and has default branch main. The GitHub API reported pull, push and admin permission flags for the linked NESDUB connection; reporting flags does not prove every API endpoint is permitted.
 
 ## Executed tests
 
-| Test | Actual method | Result | Status |
+| Capability | Reproduction | Observed outcome | Status |
 |---|---|---|---|
-| Read project instructions | GitHub fetch_file AGENTS.md main | Content and SHA retrieved | verified |
-| GitHub repo metadata | GitHub get_repo | Returned repo and permission flags | verified read, flags observed_unvalidated |
-| Branch creation | GitHub create_branch base_ref=main | Branch created | verified |
-| File commit | GitHub create_file scripts and tests on new branch | Two commit SHAs returned | verified write |
-| OS and architecture | uname -srm, /etc/os-release | Debian GNU/Linux 13 (trixie), Linux 6.18.57 x86_64 | verified |
-| Python | python --version, subprocess | 3.13.5, successful arithmetic invocation | verified |
-| Node | node --version, subprocess | 22.16.0, successful arithmetic invocation | verified |
-| Git CLI | git --version, subprocess | Git 2.47.3, successful local command | verified |
-| Other executable versions | version commands | Bash 5.2.37; npm 10.9.2; GCC 14.2.0; Clang 17.0.0; Go 1.23.2; OpenJDK 21; FFmpeg 7.1.5; jq 1.7 | verified |
-| Rust compiler on PATH | command -v cargo and rustc | Neither on PATH; existence elsewhere unknown | blocked for PATH |
-| Filesystem roundtrip | tempfile, write/read/delete /mnt/data and /tmp | Both succeeded; cleanup succeeded | verified |
-| Cross-call readback | New container call reads previously created marker | Same content in current chat | verified within session |
-| Python tool readback | Python tool reads container-created marker | Same content in current chat | verified within session |
-| Probe script syntax | python -m py_compile | Passed | verified |
-| Probe default safety | Passive script invocation | Stateful tests explicitly not_tested | verified |
-| Probe opt-in execution | Script --allow-exec | Four fixed commands succeeded | verified |
-| Probe opt-in temporary IO | Script --allow-temp-write | Both temporary roundtrips succeeded | verified |
-| Python unit tests | unittest discover | 2/2 passed | verified |
-| Local socket object | socket.socket(AF_INET, SOCK_STREAM), close without connect | Constructed; no packet sent | verified API construction only |
-| Tool enumeration | JS ALL_TOOLS metadata | 202 exposed actions counted | verified enumeration only |
+| Repository instruction read | GitHub fetch_file AGENTS.md main | Content and blob SHA returned | verified |
+| Repository metadata | GitHub get_repo | Metadata and permission flags returned | verified read; flags observed |
+| Scoped branch creation | GitHub create_branch from main | jim/initial-atlas-2026-11-21 created | verified |
+| GitHub file writing | GitHub create_file on new branch | Commits returned for scripts, tests, docs | verified |
+| GitHub readback | GitHub fetch_file from new branch | Files and blob SHA returned | verified |
+| OS/architecture | uname -srm, /etc/os-release | Debian 13, Linux 6.18.57, x86_64 | verified |
+| Shell and Python | bash --version, python --version | Bash 5.2.37; Python 3.13.5 | verified |
+| Node/Git | node --version, git --version | Node 22.16.0; Git 2.47.3 | verified |
+| Tool versions | version/lookup commands | npm 10.9.2; gcc 14.2.0; clang 17.0.0; Go 1.23.2; OpenJDK 21; FFmpeg 7.1.5; jq 1.7 | verified |
+| Rust binaries on PATH | command -v cargo rustc | Neither found; elsewhere unknown | blocked on PATH |
+| Subprocess control | fixed sh, Python, Node, Git commands via subprocess.run | All exited 0 with expected output | verified |
+| Scratch filesystem | tempfile text write/read/cleanup in /tmp and /mnt/data | Both succeeded | verified |
+| Same-session readback | Container marker read through second call | Match | verified within session |
+| Python tool shared mount | Python tool reads container marker | Match | verified within session |
+| Probe script safety | py_compile; default, --allow-exec, --allow-temp-write | Syntax passed, default did not run stateful probes, opt-in checks succeeded | verified |
+| Unit checks | unittest discover | 2/2 passed | verified |
+| Socket API | Create and close AF_INET socket, no connect | Socket object created | verified API construction only |
+| Tool enumeration | JavaScript ALL_TOOLS iteration | 202 action names exposed | verified discovery only |
 
-### Connected action inventory (not functionality assertions)
+### Tools present, not necessarily callable with user authorization
 
 - GitHub 89; ChatGPT Space 37; Gmail 21; Finances 14; Health 13; Files 11; Automations 7; Plugin Management 6; Skills 2; User Settings 2.
-- Only target GitHub read/write actions were exercised. The presence of other connected actions does not authorize personal-data queries, nor prove that those actions succeed.
-- Local shell git executable was verified; authenticated git clone/push from the shell was not.
+- Only target GitHub read/write actions were exercised. No connected personal account contents were read. Enumeration is not an integration functionality test.
+- The local Git binary was not used for remote clone/push; the independent connected GitHub API performed the writes.
 
-## Platform and resource boundaries
+### Actual limitations
 
-Effective UID reported 0 and CPU count reported 5. These are local process observations, **not** demonstrations of host root privileges, container escape, actual CPU quota, or system-wide permissions.
+The shell reports effective UID 0 and five CPUs. That does not demonstrate unrestricted host-level privileges, resource quotas or host access. Temporary file persistence across multiple calls in this chat does not prove durability across new sessions.
 
-Shared /mnt/data marker was visible through separate container and Python calls in this chat. This proves neither durability across chats nor accessibility to another agent.
+The connector successfully accessed GitHub. The shell did **not** make outbound DNS or HTTPS requests; shell egress, proxy policy and rate limitations remain not_tested. A socket constructor without connect is not an egress probe.
 
-The connector's successful GitHub reads/writes only establish this scoped service integration. Outbound HTTP/DNS using the container, network proxy policy, third-party connectivity, package installation and arbitrary remote code execution were not probed. No network requests were made by the Python probe.
+Cross-session durability, package installation, background tasks, connector authorizations other than selected GitHub calls, and real Jim ↔ Gemma acknowledgment/voice relay are not tested. No credentials, secrets, environment-variable contents, personal account data or invasive security tests were read or collected.
 
-No secret values, environment variables, access tokens, personal account records, or untrusted code were inspected.
+## Reproduce
 
-## Highest-value follow-ups
+    python3 scripts/probe_runtime.py
+    python3 scripts/probe_runtime.py --allow-exec --allow-temp-write
+    python3 -m unittest discover -s tests -v
 
-1. Read back repository files from the created branch using the GitHub connector and inspect their latest content; confirm branch HEAD/commit provenance.
-2. Begin a completely separate ChatGPT session and test whether a harmless /mnt/data marker persists. Do not extrapolate from this session's readback.
-3. With explicit network-test permission, run one bounded DNS lookup and HTTPS GET to an approved host from the container; record only success/failure and error class. Keep connector and raw shell networking separate.
-4. Have Frank run the same passive/opt-in probe independently, record version and permission differences in a separate matrix and date the observations.
-5. With authorization and confirmed issue/comment permissions for both agents, test one message, fetch, acknowledgement, idempotent retry and conflict recovery. Only then consider scheduled polling or automated relay.
+The published probe and test file blob SHAs were compared with local tested source and matched. All findings are scoped to this date and session.
 
-**Confidence:** high for tests with direct expected observable outputs in this session; metadata-only permissions and tool availability are observed_unvalidated; future-session persistence, network egress and cross-agent delivery remain not_tested.
+## Recommended next steps for Gemma/NES review
 
-See ../probe-methodology.md for reproducing and comparing these findings.
+1. Review the initial capability matrix and safe probe protocol; decide whether to authorize any extra tests.
+2. Test fresh-session marker persistence in a distinct invocation, since this session cannot establish it.
+3. If approved, run one bounded DNS lookup and HTTPS GET to an agreed public host from the shell and record only sanitized status or error class. Connector networking is not equivalent to shell networking.
+4. If approved, validate a single Jim ↔ Gemma message, independent fetch, acknowledgement and idempotent retry inside this repository only. No automatic delivery is implied.
+5. Expand optional connector/service tests only with the user-granted scope and without reading private application data for the sake of inventory.
+
+Confidence is high for directly observed command outputs, tests and repository reads/writes; permissions not tested are metadata-only; networking and future-session behaviors remain unknown.
