@@ -1,0 +1,200 @@
+{
+  "schema": "agent-runtime-atlas/skill-catalog-batch/v1",
+  "source": "skills__list and skills__read, current session",
+  "first_index": 12,
+  "last_index": 23,
+  "entries": [
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-legal-memorandum",
+      "description": "Create a document using the Legal Memorandum template and its retained reference file. Use when the user selects or names Legal Memorandum. Draft legal memoranda with the issue, brief answer, relevant facts, analysis, and conclusion.",
+      "root_status": "readable",
+      "content_chars": 1791,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-legal-memorandum/skill.md",
+        "skills://plugins/openai-templates/artifact-template-legal-memorandum/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-legal-memorandum/assets/reference.docx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-market-trends-report",
+      "description": "Create a presentation using the Market Trends Report template and its retained reference file. Use when the user selects or names Market Trends Report. Communicate market or industry trends, supporting evidence, implications, and recommended responses.",
+      "root_status": "readable",
+      "content_chars": 1867,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-market-trends-report/skill.md",
+        "skills://plugins/openai-templates/artifact-template-market-trends-report/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-market-trends-report/assets/reference.pptx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-minimal-letterhead",
+      "description": "Create a document using the Minimal Letterhead template and its retained reference file. Use when the user selects or names Minimal Letterhead. Write professional business letters with sender, recipient, message, and signature fields in a minimal letterhead layout.",
+      "root_status": "readable",
+      "content_chars": 1833,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-minimal-letterhead/skill.md",
+        "skills://plugins/openai-templates/artifact-template-minimal-letterhead/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-minimal-letterhead/assets/reference.docx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-operating-calendar",
+      "description": "Create a spreadsheet using the Operating Calendar template and its retained reference file. Use when the user selects or names Operating Calendar. Plan annual and monthly operating milestones, campaigns, launches, deadlines, and recurring events.",
+      "root_status": "readable",
+      "content_chars": 1863,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-operating-calendar/skill.md",
+        "skills://plugins/openai-templates/artifact-template-operating-calendar/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-operating-calendar/assets/reference.xlsx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-operating-review",
+      "description": "Create a presentation using the Operating Review template and its retained reference file. Use when the user selects or names Operating Review. Run weekly operating reviews with scorecards, functional updates, risks, decisions, and action items.",
+      "root_status": "readable",
+      "content_chars": 1840,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-operating-review/skill.md",
+        "skills://plugins/openai-templates/artifact-template-operating-review/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-operating-review/assets/reference.pptx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-project-kickoff",
+      "description": "Create a presentation using the Project Kickoff template and its retained reference file. Use when the user selects or names Project Kickoff. Align teams on project goals, scope, roles, milestones, risks, and the working model.",
+      "root_status": "readable",
+      "content_chars": 1817,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-project-kickoff/skill.md",
+        "skills://plugins/openai-templates/artifact-template-project-kickoff/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-project-kickoff/assets/reference.pptx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-project-tracker",
+      "description": "Create a spreadsheet using the Project Tracker template and its retained reference file. Use when the user selects or names Project Tracker. Manage workstreams, tasks, owners, status, priority, dates, launch pulse, and a Gantt schedule.",
+      "root_status": "readable",
+      "content_chars": 1838,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-project-tracker/skill.md",
+        "skills://plugins/openai-templates/artifact-template-project-tracker/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-project-tracker/assets/reference.xlsx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-sales-pipeline",
+      "description": "Create a spreadsheet using the Sales Pipeline template and its retained reference file. Use when the user selects or names Sales Pipeline. Track opportunities, stages, owners, deal sizes, probabilities, forecasts, next steps, and risks.",
+      "root_status": "readable",
+      "content_chars": 1833,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-sales-pipeline/skill.md",
+        "skills://plugins/openai-templates/artifact-template-sales-pipeline/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-sales-pipeline/assets/reference.xlsx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-simple-dark-mode",
+      "description": "Create a presentation using the Simple Dark Mode template and its retained reference file. Use when the user selects or names Simple Dark Mode. Create clean dark-mode presentations with bold typography, simple sections, charts, and imagery.",
+      "root_status": "readable",
+      "content_chars": 1835,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-simple-dark-mode/skill.md",
+        "skills://plugins/openai-templates/artifact-template-simple-dark-mode/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-simple-dark-mode/assets/reference.pptx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-simple-light-mode",
+      "description": "Create a presentation using the Simple Light Mode template and its retained reference file. Use when the user selects or names Simple Light Mode. Create clean light-mode presentations with spacious typography, simple sections, charts, and imagery.",
+      "root_status": "readable",
+      "content_chars": 1847,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-simple-light-mode/skill.md",
+        "skills://plugins/openai-templates/artifact-template-simple-light-mode/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-simple-light-mode/assets/reference.pptx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-strategy-memorandum",
+      "description": "Create a document using the Strategy Memorandum template and its retained reference file. Use when the user selects or names Strategy Memorandum. Present strategic context, choices, rationale, risks, milestones, and a clear recommendation.",
+      "root_status": "readable",
+      "content_chars": 1812,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-strategy-memorandum/skill.md",
+        "skills://plugins/openai-templates/artifact-template-strategy-memorandum/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-strategy-memorandum/assets/reference.docx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    },
+    {
+      "uri": "skills://plugins/openai-templates/artifact-template-system-design",
+      "description": "Create a document using the System Design template and its retained reference file. Use when the user selects or names System Design. Document system architecture, requirements, components, data flows, APIs, tradeoffs, and operational considerations.",
+      "root_status": "readable",
+      "content_chars": 1793,
+      "bundled_resources_advertised": [
+        "skills://plugins/openai-templates/artifact-template-system-design/skill.md",
+        "skills://plugins/openai-templates/artifact-template-system-design/assets/preview.png",
+        "skills://plugins/openai-templates/artifact-template-system-design/assets/reference.docx"
+      ],
+      "sample_headings": [
+        "Workflow",
+        "Fidelity"
+      ],
+      "activation": "Skill registry + skills__read; not independently tested for workflow outcome"
+    }
+  ]
+}
